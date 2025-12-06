@@ -884,3 +884,434 @@ body {
 .slide.active .slide-content-wrapper > * {
     animation: fadeIn 0.5s ease-out forwards;
 }
+
+/* ==================== MOBILE RESPONSIVE STYLES ==================== */
+
+/* Tablet and smaller */
+@media screen and (max-width: 1024px) {
+    .slide-content-wrapper {
+        padding: 30px 40px;
+    }
+
+    .stats-showcase,
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-logos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .two-col-layout {
+        gap: 15px;
+    }
+
+    .main-title {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 24px;
+    }
+
+    .nav-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 18px;
+    }
+
+    .slide-counter {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .presentation {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .slide {
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .slide-content-wrapper {
+        padding: 20px 15px;
+        padding-bottom: 100px;
+    }
+
+    /* Market selector on setup page */
+    #marketSelector {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .market-option {
+        padding: 12px 8px !important;
+    }
+
+    .market-option div:first-child {
+        font-size: 24px !important;
+    }
+
+    /* Stats and grids */
+    .stats-showcase,
+    .process-steps,
+    .icon-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .product-logos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .two-col-layout {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .founders-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .revenue-chart {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+    }
+
+    .revenue-bar {
+        max-width: 100%;
+    }
+
+    /* Typography */
+    .main-title {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .slide-main-title {
+        font-size: 22px;
+    }
+
+    .slide-subtitle {
+        font-size: 14px;
+    }
+
+    .title-tagline {
+        font-size: 14px;
+    }
+
+    /* Cards and boxes */
+    .stat-card {
+        padding: 15px 12px;
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .stat-icon {
+        font-size: 28px;
+    }
+
+    .highlight-box {
+        padding: 15px;
+    }
+
+    .highlight-title {
+        font-size: 18px;
+    }
+
+    .highlight-content {
+        font-size: 13px;
+    }
+
+    .col-box {
+        padding: 15px;
+    }
+
+    .col-title {
+        font-size: 16px;
+    }
+
+    .col-content {
+        font-size: 13px;
+    }
+
+    .quote-text {
+        font-size: 16px;
+    }
+
+    .quote-box {
+        padding: 20px 15px;
+    }
+
+    .quote-box::before {
+        font-size: 50px;
+        left: 10px;
+    }
+
+    /* Navigation */
+    .nav-controls {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .slide-counter {
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 15px;
+        font-size: 12px;
+        border-radius: 25px;
+    }
+
+    /* Header bar */
+    .slide-header-bar {
+        padding: 0 15px;
+        height: 60px;
+        padding-right: 70px;
+    }
+
+    .company-logo-img {
+        height: 35px;
+    }
+
+    .speaker-bubble {
+        width: 45px;
+        height: 45px;
+        right: 15px;
+    }
+
+    /* Title logos */
+    .title-logos {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .title-logo {
+        height: 50px;
+        padding: 10px 15px;
+    }
+
+    /* Process steps */
+    .process-step {
+        padding: 12px;
+    }
+
+    .process-number {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .process-text {
+        font-size: 13px;
+    }
+
+    .process-step::before {
+        display: none;
+    }
+
+    /* Icon list */
+    .icon-list-item {
+        padding: 12px 15px;
+    }
+
+    .icon-list-icon {
+        font-size: 20px;
+        min-width: 30px;
+    }
+
+    .icon-list-text {
+        font-size: 13px;
+    }
+
+    /* Products */
+    .product-logo-box {
+        padding: 12px;
+    }
+
+    .product-logo-box img {
+        height: 40px;
+    }
+
+    .product-logo-name {
+        font-size: 11px;
+    }
+
+    /* Founder cards */
+    .founder-image {
+        height: 200px;
+    }
+
+    .founder-info {
+        padding: 15px;
+    }
+
+    .founder-name {
+        font-size: 18px;
+    }
+
+    .founder-role {
+        font-size: 13px;
+    }
+
+    .founder-bio {
+        font-size: 12px;
+    }
+
+    /* Table */
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* Promo banner */
+    .promo-banner {
+        padding: 20px;
+    }
+
+    .promo-title {
+        font-size: 22px;
+    }
+
+    .promo-amount {
+        font-size: 28px;
+    }
+
+    .promo-details {
+        font-size: 14px;
+    }
+
+    /* Premium slides inline styles override */
+    [style*="padding: 50px 70px"],
+    [style*="padding: 40px 60px"],
+    [style*="padding: 35px 50px"] {
+        padding: 20px 15px !important;
+        padding-bottom: 100px !important;
+    }
+
+    [style*="font-size: 3.5em"],
+    [style*="font-size: 3em"] {
+        font-size: 1.8em !important;
+    }
+
+    [style*="font-size: 2.8em"],
+    [style*="font-size: 2.5em"],
+    [style*="font-size: 2.4em"],
+    [style*="font-size: 2.2em"] {
+        font-size: 1.4em !important;
+    }
+
+    [style*="font-size: 1.5em"],
+    [style*="font-size: 1.3em"] {
+        font-size: 1em !important;
+    }
+
+    /* Grid overrides for slides with inline styles */
+    [style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    [style*="grid-template-columns: repeat(5, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    [style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+}
+
+/* Very small phones */
+@media screen and (max-width: 480px) {
+    .slide-content-wrapper {
+        padding: 15px 10px;
+        padding-bottom: 90px;
+    }
+
+    #marketSelector {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .main-title {
+        font-size: 22px;
+    }
+
+    .slide-main-title {
+        font-size: 18px;
+    }
+
+    .stat-number {
+        font-size: 22px;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .slide-counter {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .slide {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .nav-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .slide-counter {
+        bottom: 10px;
+        left: 10px;
+    }
+}

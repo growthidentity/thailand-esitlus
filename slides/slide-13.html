@@ -14,9 +14,9 @@
         <!-- Title -->
         <div style="text-align: center; margin-bottom: 25px;">
             <div style="font-family: 'Montserrat', sans-serif; font-size: 2.4em; font-weight: 700; color: white; letter-spacing: 4px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-bottom: 8px;">
-                <i class="fas fa-calculator" style="color: #f4d03f; margin-right: 15px;"></i>INVESTMENT CALCULATOR
+                <i class="fas fa-calculator" style="color: #f4d03f; margin-right: 15px;"></i><span data-translate="INVESTMENT CALCULATOR">INVESTMENT CALCULATOR</span>
             </div>
-            <div style="font-family: 'Open Sans', sans-serif; font-size: 1.1em; font-weight: 300; color: rgba(255,255,255,0.8); letter-spacing: 2px;">
+            <div style="font-family: 'Open Sans', sans-serif; font-size: 1.1em; font-weight: 300; color: rgba(255,255,255,0.8); letter-spacing: 2px;" data-translate="Drag slider to calculate">
                 Change the amount and see the result instantly - all numbers transparent
             </div>
         </div>
@@ -30,7 +30,7 @@
 
                     <!-- Input Header -->
                     <div style="text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.15);">
-                        <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 3px;">Total Investment</div>
+                        <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 3px;" data-translate="Total Investment">Total Investment</div>
                         <div style="display: flex; align-items: center; justify-content: center; gap: 5px;">
                             <span style="font-size: 38px; font-weight: 900; font-family: 'Montserrat', sans-serif; color: #f4d03f;">$</span>
                             <input type="number" id="calcTotal" value="7800" min="100" step="100"
@@ -45,8 +45,8 @@
                     <div style="background: rgba(255,255,255,0.08); padding: 14px 18px; border-radius: 12px; margin: 10px 0; border-left: 4px solid #c9a227;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">Hub (contract)</div>
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.4);">Platform access</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);" data-translate="Hub (contract)">Hub (contract)</div>
+                                <div style="font-size: 10px; color: rgba(255,255,255,0.4);" data-translate="Platform access">Platform access</div>
                             </div>
                             <div style="text-align: right;">
                                 <div style="font-size: 20px; font-weight: 700; color: #f4d03f;" id="calcHub">$1,000</div>
@@ -59,8 +59,8 @@
                     <div style="background: rgba(76, 175, 80, 0.15); padding: 14px 18px; border-radius: 12px; margin: 10px 0; border-left: 4px solid #4caf50;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">Working capital</div>
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.4);">This earns returns</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);" data-translate="Working capital">Working capital</div>
+                                <div style="font-size: 10px; color: rgba(255,255,255,0.4);" data-translate="This earns returns">This earns returns</div>
                             </div>
                             <div style="text-align: right;">
                                 <div style="font-size: 20px; font-weight: 700; color: #81c784;" id="calcKapital">$6,800</div>
@@ -75,7 +75,7 @@
                     <!-- Kokku sisse -->
                     <div style="background: rgba(33, 150, 243, 0.15); padding: 14px 18px; border-radius: 12px; border-left: 4px solid #64b5f6;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-size: 12px; color: #90caf9; font-weight: 600;">TOTAL IN</div>
+                            <div style="font-size: 12px; color: #90caf9; font-weight: 600;" data-translate="TOTAL IN">TOTAL IN</div>
                             <div style="text-align: right;">
                                 <div style="font-size: 22px; font-weight: 800; color: #64b5f6;" id="calcKokkuSisse">$7,800</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.5);" id="calcKokkuSisseEur">~6,710 EUR</div>
@@ -89,7 +89,7 @@
 
                     <!-- Returns Header -->
                     <div style="text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.15);">
-                        <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 3px;">Returns (25 months)</div>
+                        <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 3px;" data-translate="Returns (25 months)">Returns (25 months)</div>
                         <div style="font-size: 38px; font-weight: 900; font-family: 'Montserrat', sans-serif; color: #81c784;" id="calcBrutoTagastusHeader">$17,000</div>
                         <div style="font-size: 15px; color: rgba(255,255,255,0.7); margin-top: 5px;" id="calcBrutoTagastusHeaderEur">~14,620 EUR</div>
                     </div>
@@ -98,7 +98,7 @@
                     <div style="background: rgba(76, 175, 80, 0.15); padding: 14px 18px; border-radius: 12px; margin: 10px 0; border-left: 4px solid #4caf50;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">Gross return</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);" data-translate="Gross return">Gross return</div>
                                 <div style="font-size: 10px; color: rgba(255,255,255,0.4);">Capital x 2.5</div>
                             </div>
                             <div style="text-align: right;">
@@ -112,8 +112,8 @@
                     <div style="background: rgba(244, 67, 54, 0.12); padding: 14px 18px; border-radius: 12px; margin: 10px 0; border-left: 4px solid #e57373;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);">Withdrawal fee</div>
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.4);">~3% + $1/tehing</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.7);" data-translate="Withdrawal fee">Withdrawal fee</div>
+                                <div style="font-size: 10px; color: rgba(255,255,255,0.4);">~3% + $1/tx</div>
                             </div>
                             <div style="text-align: right;">
                                 <div style="font-size: 20px; font-weight: 700; color: #e57373;" id="calcFee">-$510</div>
@@ -128,7 +128,7 @@
                     <!-- Neto tagastus -->
                     <div style="background: rgba(255, 152, 0, 0.15); padding: 14px 18px; border-radius: 12px; border-left: 4px solid #ffb74d;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-size: 12px; color: #ffcc80; font-weight: 600;">NET RETURN</div>
+                            <div style="font-size: 12px; color: #ffcc80; font-weight: 600;" data-translate="NET RETURN">NET RETURN</div>
                             <div style="text-align: right;">
                                 <div style="font-size: 22px; font-weight: 800; color: #ffb74d;" id="calcNetoTagastus">~$16,490</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.5);" id="calcNetoTagastusEur">~14,181 EUR</div>
@@ -143,14 +143,14 @@
 
                         <!-- Net Profit -->
                         <div style="text-align: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(76, 175, 80, 0.3);">
-                            <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 3px;">Net Profit</div>
+                            <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 3px;" data-translate="Net Profit">Net Profit</div>
                             <div style="font-size: 44px; font-weight: 900; font-family: 'Montserrat', sans-serif; color: #81c784;" id="calcPuhasKasum">~$8,690</div>
                             <div style="font-size: 18px; color: rgba(255,255,255,0.7); margin-top: 5px;" id="calcPuhasKasumEur">~7,473 EUR</div>
                         </div>
 
                         <!-- ROI -->
                         <div style="text-align: center;">
-                            <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px;">Return on Investment</div>
+                            <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px;" data-translate="Return on Investment">Return on Investment</div>
                             <div style="font-family: 'Montserrat', sans-serif; font-size: 52px; font-weight: 900; background: linear-gradient(135deg, #f4d03f, #c9a227); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" id="calcROI">~111%</div>
                             <div style="margin-top: 15px; font-size: 13px; color: rgba(255,255,255,0.6);" id="calcKuus">
                                 <i class="fas fa-calendar-alt" style="margin-right: 8px; color: #f4d03f;"></i>25 months = ~4.4%/month

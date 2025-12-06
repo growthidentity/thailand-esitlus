@@ -13,186 +13,305 @@ window.MarketLocalization = {
         usa: { symbol: '$', code: 'USD', rate: 1.08, name: 'US Dollar' }
     },
 
-    // Translations - Thai with English subtitles
-    translations: {
-        thailand: {
-            // Slide headers
-            'WELCOME': { th: 'ยินดีต้อนรับ', en: 'WELCOME' },
-            'MY ROLE': { th: 'บทบาทของฉัน', en: 'MY ROLE' },
-            'COMPANY BACKGROUND': { th: 'ประวัติบริษัท', en: 'COMPANY BACKGROUND' },
-            'FOUNDERS': { th: 'ผู้ก่อตั้ง', en: 'FOUNDERS' },
-            'ECOSYSTEM': { th: 'ระบบนิเวศ', en: 'ECOSYSTEM' },
-            'INCOME SOURCES': { th: 'แหล่งรายได้', en: 'INCOME SOURCES' },
-            'ARBITRAGE': { th: 'อาร์บิทราจ', en: 'ARBITRAGE' },
-            'PRICE DIFFERENCES': { th: 'ความแตกต่างของราคา', en: 'PRICE DIFFERENCES' },
-            'PROFIT GENERATION': { th: 'การสร้างกำไร', en: 'PROFIT GENERATION' },
-            'OTHER REVENUE STREAMS': { th: 'แหล่งรายได้อื่นๆ', en: 'OTHER REVENUE STREAMS' },
-            'INVESTOR EARNINGS': { th: 'รายได้นักลงทุน', en: 'INVESTOR EARNINGS' },
-            'INVESTMENT CALCULATOR': { th: 'เครื่องคำนวณการลงทุน', en: 'INVESTMENT CALCULATOR' },
-            'WEALTH MULTIPLICATION': { th: 'การเพิ่มความมั่งคั่ง', en: 'WEALTH MULTIPLICATION' },
-            'INCENTIVE TRIP': { th: 'รางวัลทริป', en: 'INCENTIVE TRIP' },
-            'CLOSING WORDS': { th: 'คำปิดท้าย', en: 'CLOSING WORDS' },
-            'NEXT STEPS': { th: 'ขั้นตอนต่อไป', en: 'NEXT STEPS' },
+    // Complete Thai translations for all slides
+    thaiTranslations: {
+        // === SLIDE 1 - Welcome ===
+        'Hello everyone!': 'สวัสดีทุกคน!',
+        'Thank you for being here today': 'ขอบคุณที่มาในวันนี้',
+        'I will tell you today:': 'วันนี้ฉันจะบอกคุณ:',
+        'How to grow money without complex trading': 'วิธีเพิ่มเงินโดยไม่ต้องเทรดที่ซับซ้อน',
+        'Without charts and daily risk': 'ไม่ต้องดูกราฟและความเสี่ยงรายวัน',
+        'Simple, clear and understandable approach': 'วิธีการที่เรียบง่าย ชัดเจน และเข้าใจง่าย',
+        'Important Note': 'หมายเหตุสำคัญ',
+        'This is not financial advice': 'นี่ไม่ใช่คำแนะนำทางการเงิน',
+        'WELCOME': 'ยินดีต้อนรับ',
 
-            // Main titles
-            'Hello everyone!': { th: 'สวัสดีทุกคน!', en: 'Hello everyone!' },
-            'Thank you for being here today': { th: 'ขอบคุณที่มาในวันนี้', en: 'Thank you for being here today' },
-            'I will tell you today:': { th: 'วันนี้ฉันจะบอกคุณ:', en: 'I will tell you today:' },
-            'How to grow money without complex trading': { th: 'วิธีเพิ่มเงินโดยไม่ต้องเทรดที่ซับซ้อน', en: 'How to grow money without complex trading' },
-            'Without charts and daily risk': { th: 'ไม่ต้องดูกราฟและความเสี่ยงรายวัน', en: 'Without charts and daily risk' },
-            'Simple, clear and understandable approach': { th: 'วิธีการที่เรียบง่าย ชัดเจน และเข้าใจง่าย', en: 'Simple, clear and understandable approach' },
-            'Important Note': { th: 'หมายเหตุสำคัญ', en: 'Important Note' },
-            'This is not financial advice': { th: 'นี่ไม่ใช่คำแนะนำทางการเงิน', en: 'This is not financial advice' },
+        // === SLIDE 2 - My Role ===
+        'MY ROLE': 'บทบาทของฉัน',
+        'My Role Today': 'บทบาทของฉันในวันนี้',
+        "I Will Give You:": 'ฉันจะให้คุณ:',
+        "What I don't do:": 'สิ่งที่ฉันไม่ทำ:',
+        'Clear understanding of the company': 'ความเข้าใจที่ชัดเจนเกี่ยวกับบริษัท',
+        'How they generate revenue': 'วิธีที่พวกเขาสร้างรายได้',
+        'What are the opportunities': 'โอกาสมีอะไรบ้าง',
+        'What are the risks': 'ความเสี่ยงมีอะไรบ้าง',
+        'How to make your own decision': 'วิธีตัดสินใจด้วยตัวเอง',
+        "I don't persuade": 'ฉันไม่ชักชวน',
+        "I don't sell anything": 'ฉันไม่ขายอะไร',
+        "I don't offer packages": 'ฉันไม่เสนอแพ็คเกจ',
+        "I don't rush decisions": 'ฉันไม่เร่งตัดสินใจ',
 
-            // Role slide
-            'My Role Today': { th: 'บทบาทของฉันในวันนี้', en: 'My Role Today' },
-            'I Will Give You:': { th: 'ฉันจะให้คุณ:', en: 'I Will Give You:' },
-            'What I don\'t do:': { th: 'สิ่งที่ฉันไม่ทำ:', en: 'What I don\'t do:' },
-            'Clear understanding of the company': { th: 'ความเข้าใจที่ชัดเจนเกี่ยวกับบริษัท', en: 'Clear understanding of the company' },
-            'How they generate revenue': { th: 'วิธีที่พวกเขาสร้างรายได้', en: 'How they generate revenue' },
-            'What are the opportunities': { th: 'โอกาสมีอะไรบ้าง', en: 'What are the opportunities' },
-            'What are the risks': { th: 'ความเสี่ยงมีอะไรบ้าง', en: 'What are the risks' },
-            'How to make your own decision': { th: 'วิธีตัดสินใจด้วยตัวเอง', en: 'How to make your own decision' },
-            'I don\'t persuade': { th: 'ฉันไม่ชักชวน', en: 'I don\'t persuade' },
-            'I don\'t sell anything': { th: 'ฉันไม่ขายอะไร', en: 'I don\'t sell anything' },
-            'I don\'t offer packages': { th: 'ฉันไม่เสนอแพ็คเกจ', en: 'I don\'t offer packages' },
-            'I don\'t rush decisions': { th: 'ฉันไม่เร่งตัดสินใจ', en: 'I don\'t rush decisions' },
+        // === SLIDE 3 - Company Background ===
+        'COMPANY BACKGROUND': 'ประวัติบริษัท',
+        'Five Years of Real Business': 'ห้าปีของธุรกิจจริง',
+        'The company operates with real offices, employees and activities': 'บริษัทดำเนินงานด้วยสำนักงานจริง พนักงาน และกิจกรรม',
+        'Years in Operation': 'ปีในการดำเนินงาน',
+        'Clients Globally': 'ลูกค้าทั่วโลก',
+        'Employees': 'พนักงาน',
+        'Real Estate Portfolio': 'พอร์ตอสังหาริมทรัพย์',
 
-            // Company background
-            'Five Years of Real Business': { th: 'ห้าปีของธุรกิจจริง', en: 'Five Years of Real Business' },
-            'The company operates with real offices, employees and activities': { th: 'บริษัทดำเนินงานด้วยสำนักงานจริง พนักงาน และกิจกรรม', en: 'The company operates with real offices, employees and activities' },
-            'Years in Operation': { th: 'ปีในการดำเนินงาน', en: 'Years in Operation' },
-            'Clients Globally': { th: 'ลูกค้าทั่วโลก', en: 'Clients Globally' },
-            'Employees': { th: 'พนักงาน', en: 'Employees' },
-            'Real Estate Portfolio': { th: 'พอร์ตอสังหาริมทรัพย์', en: 'Real Estate Portfolio' },
+        // === SLIDE 4 - Founders ===
+        'FOUNDERS': 'ผู้ก่อตั้ง',
+        'THE TEAM BEHIND YOU': 'ทีมงานที่อยู่เบื้องหลัง',
+        'Experienced leaders dedicated to your success': 'ผู้นำที่มีประสบการณ์อุทิศตนเพื่อความสำเร็จของคุณ',
+        'Co-Founder': 'ผู้ร่วมก่อตั้ง',
+        'CEO': 'ซีอีโอ',
+        'COO': 'ซีโอโอ',
 
-            // Founders
-            'THE TEAM BEHIND YOU': { th: 'ทีมงานที่อยู่เบื้องหลัง', en: 'THE TEAM BEHIND YOU' },
-            'Experienced leaders dedicated to your success': { th: 'ผู้นำที่มีประสบการณ์อุทิศตนเพื่อความสำเร็จของคุณ', en: 'Experienced leaders dedicated to your success' },
+        // === SLIDE 5 - Ecosystem ===
+        'ECOSYSTEM': 'ระบบนิเวศ',
+        'CRYPQUE ECOSYSTEM': 'ระบบนิเวศ CRYPQUE',
+        'Diverse Product Family and Services': 'ครอบครัวผลิตภัณฑ์และบริการที่หลากหลาย',
+        'Investment Platform': 'แพลตฟอร์มการลงทุน',
+        'Educational Platform': 'แพลตฟอร์มการศึกษา',
+        'Insurance': 'ประกันภัย',
+        'Crypto Exchange': 'ตลาดคริปโต',
+        'Financial Services': 'บริการทางการเงิน',
 
-            // Ecosystem
-            'CRYPQUE ECOSYSTEM': { th: 'ระบบนิเวศ CRYPQUE', en: 'CRYPQUE ECOSYSTEM' },
-            'Diverse Product Family and Services': { th: 'ครอบครัวผลิตภัณฑ์และบริการที่หลากหลาย', en: 'Diverse Product Family and Services' },
+        // === SLIDE 6 - Income Sources ===
+        'INCOME SOURCES': 'แหล่งรายได้',
+        'Where Does Company Revenue Come From?': 'รายได้บริษัทมาจากไหน?',
+        'Three Strong Revenue Streams': 'แหล่งรายได้ที่แข็งแกร่งสามแหล่ง',
+        'Arbitrage': 'อาร์บิทราจ',
+        'Diversification': 'การกระจายความเสี่ยง',
+        'Crypto Research': 'การวิจัยคริปโต',
+        'of Revenue': 'ของรายได้',
 
-            // Income sources
-            'Where Does Company Revenue Come From?': { th: 'รายได้บริษัทมาจากไหน?', en: 'Where Does Company Revenue Come From?' },
-            'Three Strong Revenue Streams': { th: 'แหล่งรายได้ที่แข็งแกร่งสามแหล่ง', en: 'Three Strong Revenue Streams' },
-            'Arbitrage': { th: 'อาร์บิทราจ', en: 'Arbitrage' },
-            'Diversification': { th: 'การกระจายความเสี่ยง', en: 'Diversification' },
-            'Crypto Research': { th: 'การวิจัยคริปโต', en: 'Crypto Research' },
+        // === SLIDE 7 - Arbitrage ===
+        'ARBITRAGE': 'อาร์บิทราจ',
+        'What is Arbitrage?': 'อาร์บิทราจคืออะไร?',
+        "Company's Main Activity - 50% of Revenue": 'กิจกรรมหลักของบริษัท - 50% ของรายได้',
+        'Arbitrage Means:': 'อาร์บิทราจหมายถึง:',
+        'Buying currency/crypto in one place cheaper': 'ซื้อสกุลเงิน/คริปโตในที่หนึ่งราคาถูกกว่า',
+        'and selling in another for more': 'และขายในที่อื่นในราคาที่สูงกว่า',
+        'Like buying gold in Dubai and selling in Europe at higher price': 'เหมือนซื้อทองในดูไบและขายในยุโรปในราคาที่สูงกว่า',
+        'BUY LOW': 'ซื้อต่ำ',
+        'SELL HIGH': 'ขายสูง',
 
-            // Arbitrage explanation
-            'What is Arbitrage?': { th: 'อาร์บิทราจคืออะไร?', en: 'What is Arbitrage?' },
-            'Company\'s Main Activity - 50% of Revenue': { th: 'กิจกรรมหลักของบริษัท - 50% ของรายได้', en: 'Company\'s Main Activity - 50% of Revenue' },
-            'Arbitrage Means:': { th: 'อาร์บิทราจหมายถึง:', en: 'Arbitrage Means:' },
-            'Buying currency/crypto in one place cheaper': { th: 'ซื้อสกุลเงิน/คริปโตในที่หนึ่งราคาถูกกว่า', en: 'Buying currency/crypto in one place cheaper' },
-            'and selling in another for more': { th: 'และขายในที่อื่นในราคาที่สูงกว่า', en: 'and selling in another for more' },
+        // === SLIDE 8 - Price Differences ===
+        'PRICE DIFFERENCES': 'ความแตกต่างของราคา',
+        'USDT Price Differences': 'ความแตกต่างของราคา USDT',
+        'Illustrative example - price differences between countries': 'ตัวอย่างประกอบ - ความแตกต่างของราคาระหว่างประเทศ',
+        'Nigeria': 'ไนจีเรีย',
+        'Pakistan': 'ปากีสถาน',
+        'Vietnam': 'เวียดนาม',
+        'Europe': 'ยุโรป',
+        'Spread Opportunity': 'โอกาสในการทำกำไร',
 
-            // Price differences
-            'USDT Price Differences': { th: 'ความแตกต่างของราคา USDT', en: 'USDT Price Differences' },
-            'Illustrative example - price differences between countries': { th: 'ตัวอย่างประกอบ - ความแตกต่างของราคาระหว่างประเทศ', en: 'Illustrative example - price differences between countries' },
+        // === SLIDE 9 - Profit Generation ===
+        'PROFIT GENERATION': 'การสร้างกำไร',
+        'How Is Profit Generated?': 'กำไรสร้างขึ้นอย่างไร?',
+        'Buy in large quantities at lower price': 'ซื้อจำนวนมากในราคาต่ำกว่า',
+        'Sell at higher price in another country': 'ขายในราคาที่สูงกว่าในประเทศอื่น',
+        'Earn 0.5-8% difference': 'ได้รับส่วนต่าง 0.5-8%',
+        'Repeated every day': 'ทำซ้ำทุกวัน',
+        'Average Profit Per Cycle': 'กำไรเฉลี่ยต่อรอบ',
+        'Transactions Per Month': 'ธุรกรรมต่อเดือน',
+        'Monthly Returns': 'ผลตอบแทนรายเดือน',
+        'Stable': 'มั่นคง',
+        'The Process': 'กระบวนการ',
+        'The Result': 'ผลลัพธ์',
 
-            // Profit generation
-            'How Is Profit Generated?': { th: 'กำไรสร้างขึ้นอย่างไร?', en: 'How Is Profit Generated?' },
-            'Buy in large quantities at lower price': { th: 'ซื้อจำนวนมากในราคาต่ำกว่า', en: 'Buy in large quantities at lower price' },
-            'Sell at higher price in another country': { th: 'ขายในราคาที่สูงกว่าในประเทศอื่น', en: 'Sell at higher price in another country' },
-            'Earn 0.5-8% difference': { th: 'ได้รับส่วนต่าง 0.5-8%', en: 'Earn 0.5-8% difference' },
-            'Repeated every day': { th: 'ทำซ้ำทุกวัน', en: 'Repeated every day' },
-            'Average Profit Per Cycle': { th: 'กำไรเฉลี่ยต่อรอบ', en: 'Average Profit Per Cycle' },
-            'Transactions Per Month': { th: 'ธุรกรรมต่อเดือน', en: 'Transactions Per Month' },
-            'Monthly Returns': { th: 'ผลตอบแทนรายเดือน', en: 'Monthly Returns' },
-            'Stable': { th: 'มั่นคง', en: 'Stable' },
+        // === SLIDE 10 - Other Revenue ===
+        'OTHER REVENUE STREAMS': 'แหล่งรายได้อื่นๆ',
+        'Other Revenue Streams (50%)': 'แหล่งรายได้อื่นๆ (50%)',
+        'Besides arbitrage, there are two more important income sources': 'นอกจากอาร์บิทราจ ยังมีแหล่งรายได้สำคัญอีกสองแหล่ง',
+        'Crypto Research (20%)': 'การวิจัยคริปโต (20%)',
+        'Diversification (30%)': 'การกระจายความเสี่ยง (30%)',
+        'Professional analysis team': 'ทีมวิเคราะห์มืออาชีพ',
+        'Market timing strategies': 'กลยุทธ์การจับจังหวะตลาด',
+        'Token research & selection': 'การวิจัยและเลือกโทเค็น',
+        'Real estate investments': 'การลงทุนอสังหาริมทรัพย์',
+        'Traditional investments': 'การลงทุนแบบดั้งเดิม',
+        'Business ventures': 'ธุรกิจต่างๆ',
 
-            // Other revenue
-            'Other Revenue Streams (50%)': { th: 'แหล่งรายได้อื่นๆ (50%)', en: 'Other Revenue Streams (50%)' },
-            'Besides arbitrage, there are two more important income sources': { th: 'นอกจากอาร์บิทราจ ยังมีแหล่งรายได้สำคัญอีกสองแหล่ง', en: 'Besides arbitrage, there are two more important income sources' },
-            'Crypto Research (20%)': { th: 'การวิจัยคริปโต (20%)', en: 'Crypto Research (20%)' },
-            'Diversification (30%)': { th: 'การกระจายความเสี่ยง (30%)', en: 'Diversification (30%)' },
+        // === SLIDE 11 - Investor Earnings ===
+        'INVESTOR EARNINGS': 'รายได้นักลงทุน',
+        'How The Investor Earns': 'นักลงทุนได้รับผลตอบแทนอย่างไร',
+        'Investor puts their money to work': 'นักลงทุนนำเงินไปทำงาน',
+        'Company uses for business': 'บริษัทใช้เพื่อธุรกิจ',
+        'Profit is generated': 'เกิดกำไร',
+        'Investor gets their share': 'นักลงทุนได้รับส่วนแบ่ง',
+        'Max 2.5× return': 'ผลตอบแทนสูงสุด 2.5 เท่า',
+        'Average Monthly Return': 'ผลตอบแทนเฉลี่ยต่อเดือน',
+        'Maximum Return': 'ผลตอบแทนสูงสุด',
+        'Payout (min $10)': 'จ่าย (ขั้นต่ำ $10)',
+        'Every day': 'ทุกวัน',
+        'Income comes from real business, not from recruiting people': 'รายได้มาจากธุรกิจจริง ไม่ใช่จากการชวนคน',
+        'The Flow': 'ขั้นตอน',
+        'Your Investment': 'การลงทุนของคุณ',
+        'Company Activities': 'กิจกรรมบริษัท',
+        'Revenue Generated': 'รายได้ที่สร้างขึ้น',
+        'Your Returns': 'ผลตอบแทนของคุณ',
 
-            // Investor earnings
-            'How The Investor Earns': { th: 'นักลงทุนได้รับผลตอบแทนอย่างไร', en: 'How The Investor Earns' },
-            'Investor puts their money to work': { th: 'นักลงทุนนำเงินไปทำงาน', en: 'Investor puts their money to work' },
-            'Company uses for business': { th: 'บริษัทใช้เพื่อธุรกิจ', en: 'Company uses for business' },
-            'Profit is generated': { th: 'เกิดกำไร', en: 'Profit is generated' },
-            'Investor gets their share': { th: 'นักลงทุนได้รับส่วนแบ่ง', en: 'Investor gets their share' },
-            'Max 2.5× return': { th: 'ผลตอบแทนสูงสุด 2.5 เท่า', en: 'Max 2.5× return' },
-            'Average Monthly Return': { th: 'ผลตอบแทนเฉลี่ยต่อเดือน', en: 'Average Monthly Return' },
-            'Maximum Return': { th: 'ผลตอบแทนสูงสุด', en: 'Maximum Return' },
-            'Payout (min $10)': { th: 'จ่าย (ขั้นต่ำ $10)', en: 'Payout (min $10)' },
-            'Every day': { th: 'ทุกวัน', en: 'Every day' },
-            'Income comes from real business, not from recruiting people': { th: 'รายได้มาจากธุรกิจจริง ไม่ใช่จากการชวนคน', en: 'Income comes from real business, not from recruiting people' },
+        // === SLIDE 12 - Fee Structure ===
+        'FEE STRUCTURE': 'โครงสร้างค่าธรรมเนียม',
+        'Understanding The Costs': 'ทำความเข้าใจค่าใช้จ่าย',
+        'Hub Fee': 'ค่าธรรมเนียม Hub',
+        'One-time platform access': 'การเข้าถึงแพลตฟอร์มครั้งเดียว',
+        'Withdrawal Fee': 'ค่าธรรมเนียมถอน',
+        'Per withdrawal': 'ต่อการถอน',
 
-            // Calculator
-            'Total Investment': { th: 'การลงทุนทั้งหมด', en: 'Total Investment' },
-            'Hub (contract)': { th: 'Hub (สัญญา)', en: 'Hub (contract)' },
-            'Platform access': { th: 'การเข้าถึงแพลตฟอร์ม', en: 'Platform access' },
-            'Working capital': { th: 'เงินทุนหมุนเวียน', en: 'Working capital' },
-            'This earns returns': { th: 'ได้รับผลตอบแทน', en: 'This earns returns' },
-            'TOTAL IN': { th: 'รวมเข้า', en: 'TOTAL IN' },
-            'Returns (25 months)': { th: 'ผลตอบแทน (25 เดือน)', en: 'Returns (25 months)' },
-            'Gross return': { th: 'ผลตอบแทนรวม', en: 'Gross return' },
-            'Withdrawal fee': { th: 'ค่าธรรมเนียมถอน', en: 'Withdrawal fee' },
-            'NET RETURN': { th: 'ผลตอบแทนสุทธิ', en: 'NET RETURN' },
-            'Net Profit': { th: 'กำไรสุทธิ', en: 'Net Profit' },
-            'Return on Investment': { th: 'ผลตอบแทนจากการลงทุน', en: 'Return on Investment' },
+        // === SLIDE 13 - Calculator ===
+        'INVESTMENT CALCULATOR': 'เครื่องคำนวณการลงทุน',
+        'Total Investment': 'การลงทุนทั้งหมด',
+        'Hub (contract)': 'Hub (สัญญา)',
+        'Platform access': 'การเข้าถึงแพลตฟอร์ม',
+        'Working capital': 'เงินทุนหมุนเวียน',
+        'This earns returns': 'ได้รับผลตอบแทน',
+        'TOTAL IN': 'รวมเข้า',
+        'Returns (25 months)': 'ผลตอบแทน (25 เดือน)',
+        'Gross return': 'ผลตอบแทนรวม',
+        'Withdrawal fee': 'ค่าธรรมเนียมถอน',
+        'NET RETURN': 'ผลตอบแทนสุทธิ',
+        'Net Profit': 'กำไรสุทธิ',
+        'Return on Investment': 'ผลตอบแทนจากการลงทุน',
+        'Monthly Average': 'ค่าเฉลี่ยรายเดือน',
+        'Drag slider to calculate': 'เลื่อนแถบเพื่อคำนวณ',
+        'Calculate Your Returns': 'คำนวณผลตอบแทนของคุณ',
 
-            // Morocco trip
-            'AFRICA / MOROCCO': { th: 'แอฟริกา / โมร็อกโก', en: 'AFRICA / MOROCCO' },
-            'Exclusive Trip With The Founders': { th: 'ทริปพิเศษกับผู้ก่อตั้ง', en: 'Exclusive Trip With The Founders' },
-            'Four days with the company founders': { th: 'สี่วันกับผู้ก่อตั้งบริษัท', en: 'Four days with the company founders' },
-            'luxury program and Morocco\'s magical atmosphere': { th: 'โปรแกรมหรูและบรรยากาศมหัศจรรย์ของโมร็อกโก', en: 'luxury program and Morocco\'s magical atmosphere' },
-            'FREE TRIP FOR INVESTORS': { th: 'ทริปฟรีสำหรับนักลงทุน', en: 'FREE TRIP FOR INVESTORS' },
-            'Invest at least': { th: 'ลงทุนอย่างน้อย', en: 'Invest at least' },
-            'Qualify for FREE trip!': { th: 'มีสิทธิ์ได้ทริปฟรี!', en: 'Qualify for FREE trip!' },
-            'Flight Tickets': { th: 'ตั๋วเครื่องบิน', en: 'Flight Tickets' },
-            'Luxury Hotel': { th: 'โรงแรมหรู', en: 'Luxury Hotel' },
-            'Founders Present': { th: 'ผู้ก่อตั้งมาร่วม', en: 'Founders Present' },
-            'All Included': { th: 'รวมทุกอย่าง', en: 'All Included' },
+        // === SLIDE 14 - Wealth Multiplication ===
+        'WEALTH MULTIPLICATION': 'การเพิ่มความมั่งคั่ง',
+        'Wealth Multiplication Mindset': 'แนวคิดการเพิ่มความมั่งคั่ง',
+        'If you have': 'ถ้าคุณมี',
+        'What do you do?': 'คุณจะทำอย่างไร?',
+        'The Normal Way': 'วิธีปกติ',
+        'The Multiplication Way': 'วิธีการเพิ่มความมั่งคั่ง',
+        'You have:': 'คุณมี:',
+        'Spend': 'ใช้จ่าย',
+        'per month': 'ต่อเดือน',
+        'After': 'หลังจาก',
+        'months': 'เดือน',
+        'left': 'เหลือ',
+        'Money is gone forever': 'เงินหายไปตลอดกาล',
+        'Put it in a contract to grow': 'นำไปลงทุนให้เติบโต',
+        'INVESTMENT': 'การลงทุน',
+        'PAYOUT': 'การจ่าย',
+        'NET PROFIT': 'กำไรสุทธิ',
+        'Total': 'รวม',
+        'Profit Can Be Reinvested Into:': 'กำไรสามารถนำไปลงทุนต่อใน:',
+        'Crypto': 'คริปโต',
+        'Gold & Silver': 'ทองและเงิน',
+        'Stocks': 'หุ้น',
+        'Real Estate': 'อสังหาริมทรัพย์',
+        'Money works for you, not you for money!': 'เงินทำงานให้คุณ ไม่ใช่คุณทำงานให้เงิน!',
+        'View Detailed 25-Month Analysis': 'ดูการวิเคราะห์รายละเอียด 25 เดือน',
 
-            // Closing
-            'Closing Words': { th: 'คำปิดท้าย', en: 'Closing Words' },
-            'If This Resonated': { th: 'ถ้าสนใจ', en: 'If This Resonated' },
-            'If Not For You': { th: 'ถ้าไม่ใช่สำหรับคุณ', en: 'If Not For You' },
-            'We can continue.': { th: 'เราสามารถดำเนินการต่อได้', en: 'We can continue.' },
-            'Let\'s talk details.': { th: 'มาคุยรายละเอียดกัน', en: 'Let\'s talk details.' },
-            'Let\'s look at options.': { th: 'มาดูตัวเลือกกัน', en: 'Let\'s look at options.' },
-            'Totally okay.': { th: 'ไม่เป็นไร', en: 'Totally okay.' },
-            'Thanks for listening.': { th: 'ขอบคุณที่รับฟัง', en: 'Thanks for listening.' },
-            'Good luck on your path!': { th: 'ขอให้โชคดี!', en: 'Good luck on your path!' },
-            'THANK YOU FOR LISTENING!': { th: 'ขอบคุณที่รับฟัง!', en: 'THANK YOU FOR LISTENING!' },
+        // === SLIDE 15 - Morocco Trip ===
+        'INCENTIVE TRIP': 'รางวัลทริป',
+        'AFRICA / MOROCCO': 'แอฟริกา / โมร็อกโก',
+        'Exclusive Trip With The Founders': 'ทริปพิเศษกับผู้ก่อตั้ง',
+        'Four days with the company founders': 'สี่วันกับผู้ก่อตั้งบริษัท',
+        "luxury program and Morocco's magical atmosphere": 'โปรแกรมหรูและบรรยากาศมหัศจรรย์ของโมร็อกโก',
+        'FREE TRIP FOR INVESTORS': 'ทริปฟรีสำหรับนักลงทุน',
+        'Invest at least': 'ลงทุนอย่างน้อย',
+        'Qualify for FREE trip!': 'มีสิทธิ์ได้ทริปฟรี!',
+        'Flight Tickets': 'ตั๋วเครื่องบิน',
+        'Luxury Hotel': 'โรงแรมหรู',
+        'Founders Present': 'ผู้ก่อตั้งมาร่วม',
+        'All Included': 'รวมทุกอย่าง',
 
-            // Next steps
-            'What Happens Next?': { th: 'ต่อไปเป็นอย่างไร?', en: 'What Happens Next?' },
-            'Simple 4-step process to get started': { th: 'ขั้นตอนง่ายๆ 4 ขั้นตอนในการเริ่มต้น', en: 'Simple 4-step process to get started' },
-            'Contact': { th: 'ติดต่อ', en: 'Contact' },
-            'Get in touch and ask questions': { th: 'ติดต่อและถามคำถาม', en: 'Get in touch and ask questions' },
-            'Registration': { th: 'ลงทะเบียน', en: 'Registration' },
-            'Simple 5-minute registration': { th: 'ลงทะเบียนง่ายๆ 5 นาที', en: 'Simple 5-minute registration' },
-            'Contract & Deposit': { th: 'สัญญาและฝากเงิน', en: 'Contract & Deposit' },
-            'Choose HUB amount and activate': { th: 'เลือกจำนวน HUB และเปิดใช้งาน', en: 'Choose HUB amount and activate' },
-            'Earnings Begin': { th: 'เริ่มรับรายได้', en: 'Earnings Begin' },
-            'Money starts working 24/7': { th: 'เงินเริ่มทำงาน 24/7', en: 'Money starts working 24/7' },
-            'Here Today?': { th: 'อยู่ที่นี่วันนี้?', en: 'Here Today?' },
-            'Need Time To Think?': { th: 'ต้องการเวลาคิด?', en: 'Need Time To Think?' },
-            'Ask all your questions': { th: 'ถามคำถามทั้งหมดของคุณ', en: 'Ask all your questions' },
-            'Clarify details': { th: 'ชี้แจงรายละเอียด', en: 'Clarify details' },
-            'Get help with registration': { th: 'รับความช่วยเหลือในการลงทะเบียน', en: 'Get help with registration' },
-            'Choose suitable package': { th: 'เลือกแพ็คเกจที่เหมาะสม', en: 'Choose suitable package' },
-            'Take your time': { th: 'ใช้เวลาของคุณ', en: 'Take your time' },
-            'Research more info': { th: 'ค้นหาข้อมูลเพิ่มเติม', en: 'Research more info' },
-            'Get in touch later': { th: 'ติดต่อภายหลัง', en: 'Get in touch later' },
-            'Info stays available': { th: 'ข้อมูลยังคงมีอยู่', en: 'Info stays available' },
-            'Questions? Let\'s talk now or later!': { th: 'มีคำถาม? มาคุยกันตอนนี้หรือทีหลัง!', en: 'Questions? Let\'s talk now or later!' }
-        },
+        // === SLIDE 16 - Risks ===
+        'RISKS': 'ความเสี่ยง',
+        'Understanding The Risks': 'ทำความเข้าใจความเสี่ยง',
+        'Market Risk': 'ความเสี่ยงตลาด',
+        'Regulatory Risk': 'ความเสี่ยงด้านกฎระเบียบ',
+        'Platform Risk': 'ความเสี่ยงแพลตฟอร์ม',
+        'Crypto markets can be volatile': 'ตลาดคริปโตมีความผันผวน',
+        'Regulations may change': 'กฎระเบียบอาจเปลี่ยนแปลง',
+        'Technical issues possible': 'อาจมีปัญหาทางเทคนิค',
+        'Only invest what you can afford to lose': 'ลงทุนเฉพาะเงินที่คุณสามารถเสียได้',
 
-        // Philippines uses English primarily
-        philippines: {},
+        // === SLIDE 17 - Closing Words ===
+        'CLOSING WORDS': 'คำปิดท้าย',
+        'Closing Words': 'คำปิดท้าย',
+        'If This Resonated': 'ถ้าสนใจ',
+        'If Not For You': 'ถ้าไม่ใช่สำหรับคุณ',
+        'We can continue.': 'เราสามารถดำเนินการต่อได้',
+        "Let's talk details.": 'มาคุยรายละเอียดกัน',
+        "Let's look at options.": 'มาดูตัวเลือกกัน',
+        'Totally okay.': 'ไม่เป็นไร',
+        'Thanks for listening.': 'ขอบคุณที่รับฟัง',
+        'Good luck on your path!': 'ขอให้โชคดี!',
+        'THANK YOU FOR LISTENING!': 'ขอบคุณที่รับฟัง!',
 
-        // Europe uses English
-        europe: {},
+        // === SLIDE 18 - Next Steps ===
+        'NEXT STEPS': 'ขั้นตอนต่อไป',
+        'What Happens Next?': 'ต่อไปเป็นอย่างไร?',
+        'Simple 4-step process to get started': 'ขั้นตอนง่ายๆ 4 ขั้นตอนในการเริ่มต้น',
+        'Contact': 'ติดต่อ',
+        'Get in touch and ask questions': 'ติดต่อและถามคำถาม',
+        'Registration': 'ลงทะเบียน',
+        'Simple 5-minute registration': 'ลงทะเบียนง่ายๆ 5 นาที',
+        'Contract & Deposit': 'สัญญาและฝากเงิน',
+        'Choose HUB amount and activate': 'เลือกจำนวน HUB และเปิดใช้งาน',
+        'Earnings Begin': 'เริ่มรับรายได้',
+        'Money starts working 24/7': 'เงินเริ่มทำงาน 24/7',
+        'Here Today?': 'อยู่ที่นี่วันนี้?',
+        'Need Time To Think?': 'ต้องการเวลาคิด?',
+        'Ask all your questions': 'ถามคำถามทั้งหมดของคุณ',
+        'Clarify details': 'ชี้แจงรายละเอียด',
+        'Get help with registration': 'รับความช่วยเหลือในการลงทะเบียน',
+        'Choose suitable package': 'เลือกแพ็คเกจที่เหมาะสม',
+        'Take your time': 'ใช้เวลาของคุณ',
+        'Research more info': 'ค้นหาข้อมูลเพิ่มเติม',
+        'Get in touch later': 'ติดต่อภายหลัง',
+        'Info stays available': 'ข้อมูลยังคงมีอยู่',
+        "Questions? Let's talk now or later!": 'มีคำถาม? มาคุยกันตอนนี้หรือทีหลัง!',
 
-        // USA uses English
-        usa: {}
+        // === Common Words ===
+        'or': 'หรือ',
+        'and': 'และ',
+        'the': '',
+        'of': 'ของ',
+        'in': 'ใน',
+        'to': 'ไป',
+        'for': 'สำหรับ',
+        'with': 'กับ',
+        'from': 'จาก',
+        'by': 'โดย',
+        'on': 'บน',
+        'at': 'ที่',
+        'is': 'คือ',
+        'are': 'คือ',
+        'was': 'คือ',
+        'were': 'คือ',
+        'be': 'เป็น',
+        'been': 'เป็น',
+        'being': 'กำลัง',
+        'have': 'มี',
+        'has': 'มี',
+        'had': 'มี',
+        'do': 'ทำ',
+        'does': 'ทำ',
+        'did': 'ทำ',
+        'will': 'จะ',
+        'would': 'จะ',
+        'could': 'สามารถ',
+        'should': 'ควร',
+        'may': 'อาจ',
+        'might': 'อาจ',
+        'must': 'ต้อง',
+        'can': 'สามารถ',
+        'not': 'ไม่',
+        'your': 'ของคุณ',
+        'you': 'คุณ',
+        'we': 'เรา',
+        'they': 'พวกเขา',
+        'them': 'พวกเขา',
+        'their': 'ของพวกเขา',
+        'this': 'นี้',
+        'that': 'นั้น',
+        'these': 'เหล่านี้',
+        'those': 'เหล่านั้น',
+        'what': 'อะไร',
+        'which': 'ซึ่ง',
+        'who': 'ใคร',
+        'whom': 'ใคร',
+        'where': 'ที่ไหน',
+        'when': 'เมื่อไร',
+        'why': 'ทำไม',
+        'how': 'อย่างไร'
     },
 
     // Initialize the localization system
@@ -201,120 +320,177 @@ window.MarketLocalization = {
         if (savedMarket) {
             this.currentMarket = savedMarket;
         }
-        this.updateCurrencyDisplay();
+        // Apply translations on init
+        setTimeout(() => {
+            this.applyFullLocalization();
+        }, 100);
     },
 
     // Set market and update display
     setMarket: function(market) {
         this.currentMarket = market;
         localStorage.setItem('selectedMarket', market);
-        this.updateCurrencyDisplay();
-        this.updateTranslations();
+        this.applyFullLocalization();
+    },
 
-        // Update calculator if exists
-        if (typeof window.updateCalculator === 'function') {
-            window.updateCalculator();
+    // Convert USD to local currency
+    convertFromUSD: function(usdAmount) {
+        const rate = this.currencyRates[this.currentMarket];
+        // Convert USD to local currency
+        // For EUR: USD * 0.92
+        // For others: USD * 0.92 * rate
+        if (this.currentMarket === 'europe') {
+            return Math.round(usdAmount * 0.92);
+        } else if (this.currentMarket === 'usa') {
+            return Math.round(usdAmount);
+        } else {
+            return Math.round(usdAmount * 0.92 * rate.rate);
         }
     },
 
     // Convert EUR to local currency
     convertFromEUR: function(eurAmount) {
         const rate = this.currencyRates[this.currentMarket];
+        if (this.currentMarket === 'usa') {
+            return Math.round(eurAmount * 1.08);
+        }
         return Math.round(eurAmount * rate.rate);
     },
 
-    // Convert USD to local currency (via EUR)
-    convertFromUSD: function(usdAmount) {
-        // First convert USD to EUR (USD * 0.92 ≈ EUR)
-        const eurAmount = usdAmount * 0.92;
-        return this.convertFromEUR(eurAmount);
-    },
-
-    // Format currency
-    formatCurrency: function(amount, fromCurrency = 'EUR') {
+    // Format currency with symbol
+    formatCurrency: function(amount, fromCurrency = 'USD') {
         const rate = this.currencyRates[this.currentMarket];
         let localAmount;
 
-        if (fromCurrency === 'USD') {
-            localAmount = this.convertFromUSD(amount);
-        } else {
+        if (fromCurrency === 'EUR') {
             localAmount = this.convertFromEUR(amount);
+        } else {
+            localAmount = this.convertFromUSD(amount);
         }
 
         return rate.symbol + localAmount.toLocaleString();
     },
 
-    // Get translation with dual display for Thai
-    getTranslation: function(key) {
-        if (this.currentMarket === 'thailand' && this.translations.thailand[key]) {
-            const trans = this.translations.thailand[key];
-            return {
-                primary: trans.th,
-                secondary: trans.en,
-                isDual: true
-            };
-        }
-        return {
-            primary: key,
-            secondary: null,
-            isDual: false
-        };
+    // Get currency info for current market
+    getCurrencyInfo: function() {
+        return this.currencyRates[this.currentMarket];
     },
 
-    // Create dual-language HTML
-    createDualText: function(key, primarySize = '1em', secondarySize = '0.7em') {
-        const trans = this.getTranslation(key);
-        if (trans.isDual) {
-            return `<span style="display: block; font-size: ${primarySize};">${trans.primary}</span>
-                    <span style="display: block; font-size: ${secondarySize}; opacity: 0.7; font-style: italic;">${trans.secondary}</span>`;
+    // Create dual-language text (Thai primary, English smaller below)
+    createDualText: function(thai, english, primaryClass = '', secondaryClass = '') {
+        if (this.currentMarket !== 'thailand') {
+            return english;
         }
-        return key;
+        return `<span class="thai-primary ${primaryClass}" style="display: block;">${thai}</span><span class="english-secondary ${secondaryClass}" style="display: block; font-size: 0.65em; opacity: 0.7; font-style: italic; margin-top: 2px;">${english}</span>`;
+    },
+
+    // Translate a single text string
+    translate: function(text) {
+        if (this.currentMarket !== 'thailand') {
+            return text;
+        }
+
+        const thai = this.thaiTranslations[text];
+        if (thai) {
+            return this.createDualText(thai, text);
+        }
+        return text;
+    },
+
+    // Apply full localization to all slides
+    applyFullLocalization: function() {
+        console.log('Applying localization for market:', this.currentMarket);
+
+        // Update currency displays
+        this.updateAllCurrencies();
+
+        // If Thailand, apply Thai translations
+        if (this.currentMarket === 'thailand') {
+            this.applyThaiTranslations();
+        } else {
+            // Reset to English
+            this.resetToEnglish();
+        }
+
+        // Update calculator if it exists
+        if (typeof window.updateCalculator === 'function') {
+            window.updateCalculator();
+        }
+
+        // Update leverage slide if it exists
+        if (typeof window.updateLeverageSlide === 'function') {
+            window.updateLeverageSlide();
+        }
+    },
+
+    // Apply Thai translations to all elements with data-translate attribute
+    applyThaiTranslations: function() {
+        // Find all elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            const thai = this.thaiTranslations[key];
+            if (thai) {
+                el.innerHTML = this.createDualText(thai, key);
+            }
+        });
+
+        // Also translate elements with class 'translatable'
+        document.querySelectorAll('.translatable').forEach(el => {
+            const originalText = el.getAttribute('data-original') || el.textContent.trim();
+            el.setAttribute('data-original', originalText);
+            const thai = this.thaiTranslations[originalText];
+            if (thai) {
+                el.innerHTML = this.createDualText(thai, originalText);
+            }
+        });
+    },
+
+    // Reset all translations to English
+    resetToEnglish: function() {
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            el.innerHTML = key;
+        });
+
+        document.querySelectorAll('.translatable').forEach(el => {
+            const originalText = el.getAttribute('data-original');
+            if (originalText) {
+                el.textContent = originalText;
+            }
+        });
     },
 
     // Update all currency displays on the page
-    updateCurrencyDisplay: function() {
+    updateAllCurrencies: function() {
         const rate = this.currencyRates[this.currentMarket];
 
-        // Update currency indicators if they exist
-        const currencyIndicators = document.querySelectorAll('.currency-indicator');
-        currencyIndicators.forEach(el => {
+        // Update elements with data-currency-usd attribute
+        document.querySelectorAll('[data-currency-usd]').forEach(el => {
+            const usdAmount = parseFloat(el.getAttribute('data-currency-usd'));
+            const localAmount = this.convertFromUSD(usdAmount);
+            el.textContent = rate.symbol + localAmount.toLocaleString() + ' ' + rate.code;
+        });
+
+        // Update elements with data-currency-eur attribute
+        document.querySelectorAll('[data-currency-eur]').forEach(el => {
+            const eurAmount = parseFloat(el.getAttribute('data-currency-eur'));
+            const localAmount = this.convertFromEUR(eurAmount);
+            el.textContent = rate.symbol + localAmount.toLocaleString() + ' ' + rate.code;
+        });
+
+        // Update currency code indicators
+        document.querySelectorAll('.currency-code').forEach(el => {
             el.textContent = rate.code;
         });
 
         // Update currency symbols
-        const currencySymbols = document.querySelectorAll('.currency-symbol');
-        currencySymbols.forEach(el => {
+        document.querySelectorAll('.currency-symbol').forEach(el => {
             el.textContent = rate.symbol;
         });
-    },
-
-    // Update all translations on the page
-    updateTranslations: function() {
-        if (this.currentMarket !== 'thailand') {
-            // Reset to English for non-Thai markets
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                el.innerHTML = key;
-            });
-            return;
-        }
-
-        // Apply Thai translations with dual display
-        document.querySelectorAll('[data-translate]').forEach(el => {
-            const key = el.getAttribute('data-translate');
-            const primarySize = el.getAttribute('data-primary-size') || '1em';
-            const secondarySize = el.getAttribute('data-secondary-size') || '0.7em';
-            el.innerHTML = this.createDualText(key, primarySize, secondarySize);
-        });
-    },
-
-    // Get current currency info
-    getCurrencyInfo: function() {
-        return this.currencyRates[this.currentMarket];
     }
 };
 
-// Initialize on load
+// Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', function() {
     window.MarketLocalization.init();
 });
