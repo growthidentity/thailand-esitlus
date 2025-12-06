@@ -887,6 +887,18 @@ body {
 
 /* ==================== MOBILE RESPONSIVE STYLES ==================== */
 
+/* Desktop fixes for proper scaling */
+@media screen and (min-width: 1025px) {
+    .slide {
+        overflow-y: auto !important;
+    }
+
+    .premium-slide > div[style*="height: 100%"] {
+        min-height: 100vh;
+        height: auto !important;
+    }
+}
+
 /* Tablet and smaller */
 @media screen and (max-width: 1024px) {
     .slide-content-wrapper {
@@ -954,7 +966,8 @@ body {
     }
 
     /* Force ALL slides to be scrollable */
-    .slide > div {
+    .slide > div,
+    .slide > div > div {
         overflow: visible !important;
         height: auto !important;
         min-height: auto !important;
@@ -965,14 +978,22 @@ body {
         padding-bottom: 100px !important;
     }
 
-    /* Override inline flex and heights */
-    [style*="height: 100%"] {
+    /* Override inline flex and heights - STRONGER */
+    div[style*="height: 100%"],
+    div[style*="height:100%"] {
         height: auto !important;
         min-height: auto !important;
     }
 
-    [style*="overflow: hidden"] {
+    div[style*="overflow: hidden"],
+    div[style*="overflow:hidden"] {
         overflow: visible !important;
+    }
+
+    /* Force flex to column on mobile */
+    div[style*="display: flex"][style*="flex-direction: column"][style*="height: 100%"] {
+        height: auto !important;
+        min-height: 100vh !important;
     }
 
     /* Premium slides - force content visibility */
@@ -986,12 +1007,21 @@ body {
     }
 
     .premium-slide > div,
+    .premium-slide > div > div,
     .setup-slide > div,
     .calculator-premium-slide > div {
         height: auto !important;
         min-height: auto !important;
         padding: 20px 15px !important;
         padding-bottom: 100px !important;
+        overflow: visible !important;
+    }
+
+    /* Fix position relative z-index elements */
+    div[style*="position: relative"][style*="z-index: 2"] {
+        height: auto !important;
+        min-height: auto !important;
+        padding-bottom: 80px !important;
     }
 
     /* Market selector on setup page */
@@ -1389,6 +1419,218 @@ body {
     [style*="width: 100px"][style*="height: 4px"],
     [style*="width: 80px"][style*="height: 3px"] {
         width: 60px !important;
+    }
+
+    /* === AGGRESSIVE OVERRIDES FOR INLINE STYLES === */
+
+    /* Force all inline padding to be smaller */
+    div[style*="padding: 50px"],
+    div[style*="padding: 40px"],
+    div[style*="padding: 35px"],
+    div[style*="padding: 30px"] {
+        padding: 15px !important;
+    }
+
+    div[style*="padding: 25px"],
+    div[style*="padding: 20px"] {
+        padding: 12px !important;
+    }
+
+    /* Force margins to be smaller */
+    div[style*="margin-bottom: 35px"],
+    div[style*="margin-bottom: 30px"] {
+        margin-bottom: 15px !important;
+    }
+
+    div[style*="margin-bottom: 25px"],
+    div[style*="margin-bottom: 20px"] {
+        margin-bottom: 12px !important;
+    }
+
+    /* Force gap to be smaller */
+    div[style*="gap: 30px"],
+    div[style*="gap: 25px"],
+    div[style*="gap: 20px"] {
+        gap: 12px !important;
+    }
+
+    /* Force flex: 1 containers to be normal height */
+    div[style*="flex: 1"] {
+        flex: none !important;
+    }
+
+    /* Icon sizes smaller */
+    i[style*="font-size: 42px"],
+    i[style*="font-size: 40px"],
+    i[style*="font-size: 36px"],
+    i[style*="font-size: 32px"] {
+        font-size: 24px !important;
+    }
+
+    i[style*="font-size: 28px"],
+    i[style*="font-size: 26px"],
+    i[style*="font-size: 24px"] {
+        font-size: 20px !important;
+    }
+
+    /* Width constraints smaller */
+    div[style*="max-width: 1200px"],
+    div[style*="max-width: 1100px"],
+    div[style*="max-width: 1000px"] {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Card border radius smaller */
+    div[style*="border-radius: 25px"],
+    div[style*="border-radius: 20px"] {
+        border-radius: 12px !important;
+    }
+
+    div[style*="border-radius: 18px"],
+    div[style*="border-radius: 15px"] {
+        border-radius: 10px !important;
+    }
+
+    /* Force letter-spacing smaller */
+    [style*="letter-spacing: 8px"],
+    [style*="letter-spacing: 5px"],
+    [style*="letter-spacing: 3px"] {
+        letter-spacing: 1px !important;
+    }
+
+    /* Force presenter photo smaller */
+    div[style*="width: 55px"][style*="height: 55px"],
+    img.presenter-photo {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* Force process step numbers smaller */
+    div[style*="width: 50px"][style*="height: 50px"][style*="border-radius: 50%"] {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 16px !important;
+    }
+
+    div[style*="width: 40px"][style*="height: 40px"][style*="border-radius: 50%"] {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 14px !important;
+    }
+
+    /* Line heights and text */
+    div[style*="line-height: 1.8"],
+    div[style*="line-height: 1.7"],
+    div[style*="line-height: 1.6"] {
+        line-height: 1.4 !important;
+    }
+
+    /* Stats grid force single column */
+    div[style*="display: grid"][style*="repeat(3, 1fr)"],
+    div[style*="display: grid"][style*="repeat(4, 1fr)"],
+    div[style*="display: grid"][style*="repeat(5, 1fr)"] {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Two column grids to single column */
+    div[style*="display: grid"][style*="1fr 1fr"]:not([style*="repeat"]) {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Background images contained */
+    img[style*="object-fit: cover"] {
+        object-position: center center !important;
+    }
+
+    /* Flex containers with wrap - force column on mobile */
+    div[style*="display: flex"][style*="flex-wrap: wrap"],
+    div[style*="display: flex"][style*="gap: 30px"] {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    /* Info cards with multiple items - stack vertically */
+    div[style*="justify-content: center"][style*="gap: 30px"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+
+    /* Qualification box smaller */
+    div[style*="max-width: 500px"] {
+        max-width: 100% !important;
+    }
+
+    div[style*="font-size: 48px"] {
+        font-size: 32px !important;
+    }
+
+    /* All large headings smaller */
+    [style*="font-size: 32px"],
+    [style*="font-size: 30px"] {
+        font-size: 22px !important;
+    }
+
+    [style*="font-size: 28px"] {
+        font-size: 20px !important;
+    }
+
+    /* Small text slightly smaller */
+    [style*="font-size: 17px"],
+    [style*="font-size: 16px"] {
+        font-size: 14px !important;
+    }
+
+    [style*="font-size: 15px"],
+    [style*="font-size: 14px"] {
+        font-size: 13px !important;
+    }
+
+    [style*="font-size: 13px"] {
+        font-size: 12px !important;
+    }
+
+    /* Force inline-block badges smaller */
+    div[style*="display: inline-block"][style*="padding: 10px 25px"] {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+
+    /* Ensure cards don't overflow */
+    div[style*="backdrop-filter: blur"] {
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Fix horizontal flex items to stack */
+    div[style*="display: flex"][style*="justify-content: center"]:not([style*="flex-direction"]) {
+        flex-wrap: wrap !important;
+    }
+
+    /* Morocco slide title fix */
+    [style*="letter-spacing: 8px"] {
+        letter-spacing: 2px !important;
+        font-size: 1.5em !important;
+    }
+
+    /* Box shadows reduced for performance */
+    div[style*="box-shadow: 0 20px"],
+    div[style*="box-shadow: 0 15px"] {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    }
+
+    /* Force all spans with font sizes to be smaller */
+    span[style*="font-size: 26px"],
+    span[style*="font-size: 24px"] {
+        font-size: 18px !important;
+    }
+
+    /* Note text at bottom smaller */
+    div[style*="font-size: 14px"][style*="color: rgba(255,255,255,0.7)"] {
+        font-size: 11px !important;
     }
 }
 
