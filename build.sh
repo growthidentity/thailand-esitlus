@@ -12,7 +12,7 @@ with open('css/styles.css', 'r') as f:
 
 # Read all slides in order (starting from 0)
 slides_html = ''
-for i in range(0, 21):
+for i in range(0, 20):
     slide_file = f'slides/slide-{i:02d}.html'
     with open(slide_file, 'r') as f:
         slide_content = f.read()
@@ -52,7 +52,7 @@ html = f'''<!DOCTYPE html>
     </div>
 
     <div class="slide-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">21</span>
+        <span id="currentSlide">1</span> / <span id="totalSlides">20</span>
     </div>
 
     <script>

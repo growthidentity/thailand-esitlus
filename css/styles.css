@@ -141,9 +141,9 @@ body {
 }
 
 .title-slide {
-    background: var(--gradient-blue);
     position: relative;
     overflow: hidden;
+    background: #000;
 }
 
 .title-slide::before {
@@ -153,8 +153,25 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.3;
+    background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&q=95');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.title-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+        rgba(10, 10, 30, 0.92) 0%,
+        rgba(20, 30, 50, 0.88) 30%,
+        rgba(15, 25, 45, 0.90) 70%,
+        rgba(10, 10, 30, 0.92) 100%);
+    z-index: 1;
 }
 
 .revenue-chart {
@@ -225,7 +242,7 @@ body {
 
 .title-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -271,6 +288,10 @@ body {
     opacity: 0.8;
     max-width: 800px;
     line-height: 1.6;
+}
+
+.content-slide {
+    background: white !important;
 }
 
 .content-slide .slide-content-wrapper {
