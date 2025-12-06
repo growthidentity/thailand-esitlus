@@ -24,6 +24,10 @@ for i in range(0, 20):
 with open('js/script.js', 'r') as f:
     js = f.read()
 
+# Read localization JS
+with open('js/localization.js', 'r') as f:
+    localization_js = f.read()
+
 # Create complete HTML
 html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -56,6 +60,8 @@ html = f'''<!DOCTYPE html>
     </div>
 
     <script>
+{localization_js}
+
 {js}
     </script>
 </body>

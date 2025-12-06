@@ -76,6 +76,43 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Market Selection -->
+            <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
+                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 15px; text-align: center;">
+                    <i class="fas fa-globe" style="margin-right: 8px; color: #f4d03f;"></i>Select Market / Language:
+                </div>
+                <div id="marketSelector" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <!-- Thailand -->
+                    <div onclick="selectMarket('thailand')" id="market-thailand" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇹🇭</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Thailand</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">฿ THB + ไทย</div>
+                    </div>
+                    <!-- Philippines -->
+                    <div onclick="selectMarket('philippines')" id="market-philippines" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇵🇭</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Philippines</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">₱ PHP</div>
+                    </div>
+                    <!-- Europe -->
+                    <div onclick="selectMarket('europe')" id="market-europe" class="market-option market-selected" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2)); border: 2px solid #f4d03f; transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇪🇺</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Europe</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">€ EUR</div>
+                    </div>
+                    <!-- USA -->
+                    <div onclick="selectMarket('usa')" id="market-usa" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇺🇸</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">USA</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">$ USD</div>
+                    </div>
+                </div>
+                <div id="selectedMarketInfo" style="margin-top: 15px; text-align: center; font-size: 0.85em; color: #10b981;">
+                    <i class="fas fa-check-circle" style="margin-right: 5px;"></i>
+                    <span id="marketInfoText">Europe selected - € EUR, English</span>
+                </div>
+            </div>
         </div>
 
         <!-- Start Button -->
@@ -270,5 +307,50 @@
     function skipSetup() {
         startPresentation();
     }
+
+    // Market selection
+    const marketInfo = {
+        thailand: { name: 'Thailand', symbol: '฿', code: 'THB', lang: 'Thai + English' },
+        philippines: { name: 'Philippines', symbol: '₱', code: 'PHP', lang: 'English' },
+        europe: { name: 'Europe', symbol: '€', code: 'EUR', lang: 'English' },
+        usa: { name: 'USA', symbol: '$', code: 'USD', lang: 'English' }
+    };
+
+    function selectMarket(market) {
+        // Update visual selection
+        document.querySelectorAll('.market-option').forEach(el => {
+            el.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))';
+            el.style.borderColor = 'rgba(244, 208, 63, 0.3)';
+        });
+
+        const selected = document.getElementById('market-' + market);
+        if (selected) {
+            selected.style.background = 'linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2))';
+            selected.style.borderColor = '#f4d03f';
+        }
+
+        // Update info text
+        const info = marketInfo[market];
+        const infoText = document.getElementById('marketInfoText');
+        if (infoText && info) {
+            infoText.textContent = info.name + ' selected - ' + info.symbol + ' ' + info.code + ', ' + info.lang;
+        }
+
+        // Save to localStorage
+        localStorage.setItem('selectedMarket', market);
+
+        // Update localization system if available
+        if (window.MarketLocalization) {
+            window.MarketLocalization.setMarket(market);
+        }
+    }
+
+    // Load saved market on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedMarket = localStorage.getItem('selectedMarket');
+        if (savedMarket && marketInfo[savedMarket]) {
+            selectMarket(savedMarket);
+        }
+    });
     </script>
 </div>

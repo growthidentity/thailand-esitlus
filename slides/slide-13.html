@@ -218,6 +218,22 @@
         const total = parseFloat(totalInput.value) || 0;
         const eurRate = window.liveEurRate || 0.86;
 
+        // Get market currency info
+        let localSymbol = '€';
+        let localCode = 'EUR';
+        let localRate = eurRate; // Convert from USD to local
+
+        if (window.MarketLocalization) {
+            const market = window.MarketLocalization.currentMarket;
+            const currencyInfo = window.MarketLocalization.currencyRates[market];
+            if (currencyInfo) {
+                localSymbol = currencyInfo.symbol;
+                localCode = currencyInfo.code;
+                // Convert USD to local via EUR: USD * 0.92 = EUR, EUR * localRate = local
+                localRate = 0.92 * currencyInfo.rate;
+            }
+        }
+
         // Hub on ~12.82% kogu summast (1000/7800 = 0.1282)
         const hub = total * 0.1282;
         const kapital = total - hub;
@@ -230,29 +246,29 @@
 
         // Format numbers
         const fmt = (n) => n.toLocaleString('en-US', {maximumFractionDigits: 0});
-        const fmtEur = (n) => (n * eurRate).toLocaleString('en-US', {maximumFractionDigits: 0});
+        const fmtLocal = (n) => (n * localRate).toLocaleString('en-US', {maximumFractionDigits: 0});
 
         // Update DOM - check each element exists
         const updateEl = (id, text) => { const el = document.getElementById(id); if(el) el.textContent = text; };
         const updateHTML = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
 
-        updateEl('calcTotalEur', '~' + fmtEur(total) + ' EUR');
+        updateEl('calcTotalEur', '~' + localSymbol + fmtLocal(total) + ' ' + localCode);
         updateEl('calcHub', '$' + fmt(hub));
-        updateEl('calcHubEur', '~' + fmtEur(hub) + ' EUR');
+        updateEl('calcHubEur', '~' + localSymbol + fmtLocal(hub) + ' ' + localCode);
         updateEl('calcKapital', '$' + fmt(kapital));
-        updateEl('calcKapitalEur', '~' + fmtEur(kapital) + ' EUR');
+        updateEl('calcKapitalEur', '~' + localSymbol + fmtLocal(kapital) + ' ' + localCode);
         updateEl('calcKokkuSisse', '$' + fmt(total));
-        updateEl('calcKokkuSisseEur', '~' + fmtEur(total) + ' EUR');
+        updateEl('calcKokkuSisseEur', '~' + localSymbol + fmtLocal(total) + ' ' + localCode);
         updateEl('calcBrutoTagastusHeader', '$' + fmt(brutoTagastus));
-        updateEl('calcBrutoTagastusHeaderEur', '~' + fmtEur(brutoTagastus) + ' EUR');
+        updateEl('calcBrutoTagastusHeaderEur', '~' + localSymbol + fmtLocal(brutoTagastus) + ' ' + localCode);
         updateEl('calcBrutoTagastus', '$' + fmt(brutoTagastus));
-        updateEl('calcBrutoTagastusEur', '~' + fmtEur(brutoTagastus) + ' EUR');
+        updateEl('calcBrutoTagastusEur', '~' + localSymbol + fmtLocal(brutoTagastus) + ' ' + localCode);
         updateEl('calcFee', '-$' + fmt(fee));
-        updateEl('calcFeeEur', '~-' + fmtEur(fee) + ' EUR');
+        updateEl('calcFeeEur', '~-' + localSymbol + fmtLocal(fee) + ' ' + localCode);
         updateEl('calcNetoTagastus', '~$' + fmt(netoTagastus));
-        updateEl('calcNetoTagastusEur', '~' + fmtEur(netoTagastus) + ' EUR');
+        updateEl('calcNetoTagastusEur', '~' + localSymbol + fmtLocal(netoTagastus) + ' ' + localCode);
         updateEl('calcPuhasKasum', '~$' + fmt(puhasKasum));
-        updateEl('calcPuhasKasumEur', '~' + fmtEur(puhasKasum) + ' EUR');
+        updateEl('calcPuhasKasumEur', '~' + localSymbol + fmtLocal(puhasKasum) + ' ' + localCode);
         updateEl('calcROI', '~' + roi.toFixed(0) + '%');
         updateHTML('calcKuus', '<i class="fas fa-calendar-alt" style="margin-right: 8px; color: #f4d03f;"></i>25 months = ~' + monthReturn.toFixed(1) + '%/month');
 

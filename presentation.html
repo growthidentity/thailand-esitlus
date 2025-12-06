@@ -976,6 +976,43 @@ body {
                     </div>
                 </div>
             </div>
+
+            <!-- Market Selection -->
+            <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
+                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 15px; text-align: center;">
+                    <i class="fas fa-globe" style="margin-right: 8px; color: #f4d03f;"></i>Select Market / Language:
+                </div>
+                <div id="marketSelector" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <!-- Thailand -->
+                    <div onclick="selectMarket('thailand')" id="market-thailand" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇹🇭</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Thailand</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">฿ THB + ไทย</div>
+                    </div>
+                    <!-- Philippines -->
+                    <div onclick="selectMarket('philippines')" id="market-philippines" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇵🇭</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Philippines</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">₱ PHP</div>
+                    </div>
+                    <!-- Europe -->
+                    <div onclick="selectMarket('europe')" id="market-europe" class="market-option market-selected" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2)); border: 2px solid #f4d03f; transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇪🇺</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Europe</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">€ EUR</div>
+                    </div>
+                    <!-- USA -->
+                    <div onclick="selectMarket('usa')" id="market-usa" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">🇺🇸</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">USA</div>
+                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">$ USD</div>
+                    </div>
+                </div>
+                <div id="selectedMarketInfo" style="margin-top: 15px; text-align: center; font-size: 0.85em; color: #10b981;">
+                    <i class="fas fa-check-circle" style="margin-right: 5px;"></i>
+                    <span id="marketInfoText">Europe selected - € EUR, English</span>
+                </div>
+            </div>
         </div>
 
         <!-- Start Button -->
@@ -1170,6 +1207,51 @@ body {
     function skipSetup() {
         startPresentation();
     }
+
+    // Market selection
+    const marketInfo = {
+        thailand: { name: 'Thailand', symbol: '฿', code: 'THB', lang: 'Thai + English' },
+        philippines: { name: 'Philippines', symbol: '₱', code: 'PHP', lang: 'English' },
+        europe: { name: 'Europe', symbol: '€', code: 'EUR', lang: 'English' },
+        usa: { name: 'USA', symbol: '$', code: 'USD', lang: 'English' }
+    };
+
+    function selectMarket(market) {
+        // Update visual selection
+        document.querySelectorAll('.market-option').forEach(el => {
+            el.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))';
+            el.style.borderColor = 'rgba(244, 208, 63, 0.3)';
+        });
+
+        const selected = document.getElementById('market-' + market);
+        if (selected) {
+            selected.style.background = 'linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2))';
+            selected.style.borderColor = '#f4d03f';
+        }
+
+        // Update info text
+        const info = marketInfo[market];
+        const infoText = document.getElementById('marketInfoText');
+        if (infoText && info) {
+            infoText.textContent = info.name + ' selected - ' + info.symbol + ' ' + info.code + ', ' + info.lang;
+        }
+
+        // Save to localStorage
+        localStorage.setItem('selectedMarket', market);
+
+        // Update localization system if available
+        if (window.MarketLocalization) {
+            window.MarketLocalization.setMarket(market);
+        }
+    }
+
+    // Load saved market on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedMarket = localStorage.getItem('selectedMarket');
+        if (savedMarket && marketInfo[savedMarket]) {
+            selectMarket(savedMarket);
+        }
+    });
     </script>
 </div>
 
@@ -2796,6 +2878,22 @@ body {
         const total = parseFloat(totalInput.value) || 0;
         const eurRate = window.liveEurRate || 0.86;
 
+        // Get market currency info
+        let localSymbol = '€';
+        let localCode = 'EUR';
+        let localRate = eurRate; // Convert from USD to local
+
+        if (window.MarketLocalization) {
+            const market = window.MarketLocalization.currentMarket;
+            const currencyInfo = window.MarketLocalization.currencyRates[market];
+            if (currencyInfo) {
+                localSymbol = currencyInfo.symbol;
+                localCode = currencyInfo.code;
+                // Convert USD to local via EUR: USD * 0.92 = EUR, EUR * localRate = local
+                localRate = 0.92 * currencyInfo.rate;
+            }
+        }
+
         // Hub on ~12.82% kogu summast (1000/7800 = 0.1282)
         const hub = total * 0.1282;
         const kapital = total - hub;
@@ -2808,29 +2906,29 @@ body {
 
         // Format numbers
         const fmt = (n) => n.toLocaleString('en-US', {maximumFractionDigits: 0});
-        const fmtEur = (n) => (n * eurRate).toLocaleString('en-US', {maximumFractionDigits: 0});
+        const fmtLocal = (n) => (n * localRate).toLocaleString('en-US', {maximumFractionDigits: 0});
 
         // Update DOM - check each element exists
         const updateEl = (id, text) => { const el = document.getElementById(id); if(el) el.textContent = text; };
         const updateHTML = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
 
-        updateEl('calcTotalEur', '~' + fmtEur(total) + ' EUR');
+        updateEl('calcTotalEur', '~' + localSymbol + fmtLocal(total) + ' ' + localCode);
         updateEl('calcHub', '$' + fmt(hub));
-        updateEl('calcHubEur', '~' + fmtEur(hub) + ' EUR');
+        updateEl('calcHubEur', '~' + localSymbol + fmtLocal(hub) + ' ' + localCode);
         updateEl('calcKapital', '$' + fmt(kapital));
-        updateEl('calcKapitalEur', '~' + fmtEur(kapital) + ' EUR');
+        updateEl('calcKapitalEur', '~' + localSymbol + fmtLocal(kapital) + ' ' + localCode);
         updateEl('calcKokkuSisse', '$' + fmt(total));
-        updateEl('calcKokkuSisseEur', '~' + fmtEur(total) + ' EUR');
+        updateEl('calcKokkuSisseEur', '~' + localSymbol + fmtLocal(total) + ' ' + localCode);
         updateEl('calcBrutoTagastusHeader', '$' + fmt(brutoTagastus));
-        updateEl('calcBrutoTagastusHeaderEur', '~' + fmtEur(brutoTagastus) + ' EUR');
+        updateEl('calcBrutoTagastusHeaderEur', '~' + localSymbol + fmtLocal(brutoTagastus) + ' ' + localCode);
         updateEl('calcBrutoTagastus', '$' + fmt(brutoTagastus));
-        updateEl('calcBrutoTagastusEur', '~' + fmtEur(brutoTagastus) + ' EUR');
+        updateEl('calcBrutoTagastusEur', '~' + localSymbol + fmtLocal(brutoTagastus) + ' ' + localCode);
         updateEl('calcFee', '-$' + fmt(fee));
-        updateEl('calcFeeEur', '~-' + fmtEur(fee) + ' EUR');
+        updateEl('calcFeeEur', '~-' + localSymbol + fmtLocal(fee) + ' ' + localCode);
         updateEl('calcNetoTagastus', '~$' + fmt(netoTagastus));
-        updateEl('calcNetoTagastusEur', '~' + fmtEur(netoTagastus) + ' EUR');
+        updateEl('calcNetoTagastusEur', '~' + localSymbol + fmtLocal(netoTagastus) + ' ' + localCode);
         updateEl('calcPuhasKasum', '~$' + fmt(puhasKasum));
-        updateEl('calcPuhasKasumEur', '~' + fmtEur(puhasKasum) + ' EUR');
+        updateEl('calcPuhasKasumEur', '~' + localSymbol + fmtLocal(puhasKasum) + ' ' + localCode);
         updateEl('calcROI', '~' + roi.toFixed(0) + '%');
         updateHTML('calcKuus', '<i class="fas fa-calendar-alt" style="margin-right: 8px; color: #f4d03f;"></i>25 months = ~' + monthReturn.toFixed(1) + '%/month');
 
@@ -2877,10 +2975,10 @@ body {
 
             <!-- Title -->
             <div style="font-family: 'Montserrat', sans-serif; font-size: 2.4em; font-weight: 700; color: white; margin-bottom: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-                <i class="fas fa-rocket" style="color: #f4d03f; margin-right: 15px;"></i>Raha Võimendamise Mõtteviis
+                <i class="fas fa-rocket" style="color: #f4d03f; margin-right: 15px;"></i>Wealth Multiplication Mindset
             </div>
             <div style="font-family: 'Open Sans', sans-serif; font-size: 1.2em; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 20px; letter-spacing: 1px;">
-                Kui sul on <span id="leverageAmount" style="color: #f4d03f; font-weight: 700;">10,000 EUR</span> - Mida sa teed?
+                If you have <span id="leverageAmount" style="color: #f4d03f; font-weight: 700;">10,000 EUR</span> - What do you do?
             </div>
 
             <!-- Two Column Comparison -->
@@ -2889,14 +2987,14 @@ body {
                 <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05)); backdrop-filter: blur(15px); border-radius: 20px; padding: 25px; border: 2px solid rgba(239, 68, 68, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
                         <i class="fas fa-times-circle" style="font-size: 26px; color: #ef4444;"></i>
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #ef4444;">Tavaline Tee</span>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #ef4444;">The Normal Way</span>
                     </div>
                     <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.7;">
-                        <div style="font-size: 17px; font-weight: 600; color: #ef4444; margin-bottom: 12px;">Sul on: <span id="badWayAmount">10,000 EUR</span></div>
-                        <div style="margin-bottom: 6px;">→ Tarbid <span id="badWayMonthly">1,000 EUR</span> months</div>
-                        <div style="margin-bottom: 6px;">→ <span id="badWayMonths">10</span> month pärast</div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 2.2em; font-weight: 900; color: #ef4444; margin: 12px 0;">0 EUR alles</div>
-                        <div style="opacity: 0.7; font-size: 13px;">Raha on kadunud igaveseks.</div>
+                        <div style="font-size: 17px; font-weight: 600; color: #ef4444; margin-bottom: 12px;">You have: <span id="badWayAmount">10,000 EUR</span></div>
+                        <div style="margin-bottom: 6px;">→ Spend <span id="badWayMonthly">1,000 EUR</span>/month</div>
+                        <div style="margin-bottom: 6px;">→ After <span id="badWayMonths">10</span> months</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 2.2em; font-weight: 900; color: #ef4444; margin: 12px 0;">0 EUR left</div>
+                        <div style="opacity: 0.7; font-size: 13px;">Money is gone forever.</div>
                     </div>
                 </div>
 
@@ -2904,22 +3002,22 @@ body {
                 <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05)); backdrop-filter: blur(15px); border-radius: 20px; padding: 25px; border: 2px solid rgba(16, 185, 129, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
                         <i class="fas fa-check-circle" style="font-size: 26px; color: #10b981;"></i>
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #10b981;">Võimendamise Tee</span>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #10b981;">The Multiplication Way</span>
                     </div>
                     <div style="color: rgba(255,255,255,0.95); font-size: 14px; line-height: 1.5;">
-                        <div style="font-size: 17px; font-weight: 600; color: #10b981; margin-bottom: 10px;">Sul on: <span id="goodWayAmount">10,000 EUR</span></div>
-                        <div style="font-size: 14px; color: #3b82f6; font-weight: 600; margin-bottom: 10px;">Paned lepingusse kasvama</div>
+                        <div style="font-size: 17px; font-weight: 600; color: #10b981; margin-bottom: 10px;">You have: <span id="goodWayAmount">10,000 EUR</span></div>
+                        <div style="font-size: 14px; color: #3b82f6; font-weight: 600; margin-bottom: 10px;">Put it in a contract to grow</div>
                         <div style="background: rgba(16, 185, 129, 0.2); padding: 7px 10px; border-radius: 8px; margin-bottom: 6px; border-left: 3px solid #10b981;">
-                            <strong style="color: #10b981;">INVESTEERING:</strong> <span id="goodWayInvest">10,000 EUR</span>
+                            <strong style="color: #10b981;">INVESTMENT:</strong> <span id="goodWayInvest">10,000 EUR</span>
                         </div>
                         <div style="background: rgba(59, 130, 246, 0.2); padding: 7px 10px; border-radius: 8px; margin-bottom: 6px; border-left: 3px solid #3b82f6;">
-                            <strong style="color: #3b82f6;">VÄLJAMAKSE:</strong> <span id="goodWayMonthlyProfit">566 EUR</span>/month (neto)
+                            <strong style="color: #3b82f6;">PAYOUT:</strong> <span id="goodWayMonthlyProfit">566 EUR</span>/month (net)
                         </div>
                         <div style="background: rgba(245, 158, 11, 0.2); padding: 7px 10px; border-radius: 8px; margin-bottom: 6px; border-left: 3px solid #f59e0b;">
-                            <strong style="color: #f59e0b;">25 KUUD:</strong> <span id="goodWay25months">25,000 EUR</span>
+                            <strong style="color: #f59e0b;">25 MONTHS:</strong> <span id="goodWay25months">25,000 EUR</span>
                         </div>
-                        <div style="margin-top: 8px;">PUHAS KASUM: <strong style="font-size: 18px; color: #10b981;" id="goodWayNetProfit">15,000 EUR</strong></div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 700; color: #10b981; margin-top: 3px;">Kokku: <span id="goodWayTotal">25,000 EUR</span></div>
+                        <div style="margin-top: 8px;">NET PROFIT: <strong style="font-size: 18px; color: #10b981;" id="goodWayNetProfit">15,000 EUR</strong></div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 700; color: #10b981; margin-top: 3px;">Total: <span id="goodWayTotal">25,000 EUR</span></div>
                     </div>
                 </div>
             </div>
@@ -2928,22 +3026,22 @@ body {
             <div style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(244, 208, 63, 0.08)); backdrop-filter: blur(15px); border-radius: 15px; padding: 15px 25px; border: 1px solid rgba(244, 208, 63, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;">
                 <div style="display: flex; align-items: center; gap: 12px; justify-content: center; margin-bottom: 8px;">
                     <i class="fas fa-sync-alt" style="font-size: 18px; color: #f4d03f;"></i>
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 1em; font-weight: 600; color: #f4d03f;">Kasumit Saab Suunata Edasi:</span>
+                    <span style="font-family: 'Montserrat', sans-serif; font-size: 1em; font-weight: 600; color: #f4d03f;">Profit Can Be Reinvested Into:</span>
                 </div>
                 <div style="font-size: 15px; color: rgba(255,255,255,0.95); margin-bottom: 6px;">
-                    <span style="margin: 0 10px;"><i class="fab fa-bitcoin" style="color: #f7931a; margin-right: 5px;"></i><strong>Krüpto</strong></span>
-                    <span style="margin: 0 10px;"><i class="fas fa-coins" style="color: #ffd700; margin-right: 5px;"></i><strong>Kuld & Hõbe</strong></span>
+                    <span style="margin: 0 10px;"><i class="fab fa-bitcoin" style="color: #f7931a; margin-right: 5px;"></i><strong>Crypto</strong></span>
+                    <span style="margin: 0 10px;"><i class="fas fa-coins" style="color: #ffd700; margin-right: 5px;"></i><strong>Gold & Silver</strong></span>
                     <span style="margin: 0 10px;"><i class="fas fa-chart-line" style="color: #10b981; margin-right: 5px;"></i><strong>Stocks</strong></span>
                     <span style="margin: 0 10px;"><i class="fas fa-home" style="color: #3b82f6; margin-right: 5px;"></i><strong>Real Estate</strong></span>
                 </div>
-                <div style="font-size: 15px; font-weight: 700; color: #f4d03f;">Raha töötab sinu eest, mitte sina raha eest!</div>
+                <div style="font-size: 15px; font-weight: 700; color: #f4d03f;">Money works for you, not you for money!</div>
             </div>
 
             <!-- Interactive Analysis Link -->
             <div style="text-align: center; margin-top: 15px;">
                 <a id="analysisLink" href="wealth-multiplier-analysis.html?amount=7800" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #c9a227, #f4d03f); color: #0f0c08; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 700; box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4); transition: all 0.3s;">
                     <i class="fas fa-chart-line" style="margin-right: 10px;"></i>
-                    Vaata Detailset 25-Kuu Analüüsi (Reaalajas Hinnad)
+                    View Detailed 25-Month Analysis (Live Prices)
                     <i class="fas fa-external-link-alt" style="margin-left: 10px; font-size: 11px;"></i>
                 </a>
             </div>
@@ -3603,6 +3701,328 @@ body {
     </div>
 
     <script>
+// Market Localization System for Crypque & Mobicryp Presentation
+// Supports: Thailand (THB), Philippines (PHP), Europe (EUR), USA (USD)
+
+window.MarketLocalization = {
+    // Current market setting
+    currentMarket: 'europe',
+
+    // Currency rates (EUR as base)
+    currencyRates: {
+        europe: { symbol: '€', code: 'EUR', rate: 1, name: 'Euro' },
+        thailand: { symbol: '฿', code: 'THB', rate: 38, name: 'Thai Baht' },
+        philippines: { symbol: '₱', code: 'PHP', rate: 62, name: 'Philippine Peso' },
+        usa: { symbol: '$', code: 'USD', rate: 1.08, name: 'US Dollar' }
+    },
+
+    // Translations - Thai with English subtitles
+    translations: {
+        thailand: {
+            // Slide headers
+            'WELCOME': { th: 'ยินดีต้อนรับ', en: 'WELCOME' },
+            'MY ROLE': { th: 'บทบาทของฉัน', en: 'MY ROLE' },
+            'COMPANY BACKGROUND': { th: 'ประวัติบริษัท', en: 'COMPANY BACKGROUND' },
+            'FOUNDERS': { th: 'ผู้ก่อตั้ง', en: 'FOUNDERS' },
+            'ECOSYSTEM': { th: 'ระบบนิเวศ', en: 'ECOSYSTEM' },
+            'INCOME SOURCES': { th: 'แหล่งรายได้', en: 'INCOME SOURCES' },
+            'ARBITRAGE': { th: 'อาร์บิทราจ', en: 'ARBITRAGE' },
+            'PRICE DIFFERENCES': { th: 'ความแตกต่างของราคา', en: 'PRICE DIFFERENCES' },
+            'PROFIT GENERATION': { th: 'การสร้างกำไร', en: 'PROFIT GENERATION' },
+            'OTHER REVENUE STREAMS': { th: 'แหล่งรายได้อื่นๆ', en: 'OTHER REVENUE STREAMS' },
+            'INVESTOR EARNINGS': { th: 'รายได้นักลงทุน', en: 'INVESTOR EARNINGS' },
+            'INVESTMENT CALCULATOR': { th: 'เครื่องคำนวณการลงทุน', en: 'INVESTMENT CALCULATOR' },
+            'WEALTH MULTIPLICATION': { th: 'การเพิ่มความมั่งคั่ง', en: 'WEALTH MULTIPLICATION' },
+            'INCENTIVE TRIP': { th: 'รางวัลทริป', en: 'INCENTIVE TRIP' },
+            'CLOSING WORDS': { th: 'คำปิดท้าย', en: 'CLOSING WORDS' },
+            'NEXT STEPS': { th: 'ขั้นตอนต่อไป', en: 'NEXT STEPS' },
+
+            // Main titles
+            'Hello everyone!': { th: 'สวัสดีทุกคน!', en: 'Hello everyone!' },
+            'Thank you for being here today': { th: 'ขอบคุณที่มาในวันนี้', en: 'Thank you for being here today' },
+            'I will tell you today:': { th: 'วันนี้ฉันจะบอกคุณ:', en: 'I will tell you today:' },
+            'How to grow money without complex trading': { th: 'วิธีเพิ่มเงินโดยไม่ต้องเทรดที่ซับซ้อน', en: 'How to grow money without complex trading' },
+            'Without charts and daily risk': { th: 'ไม่ต้องดูกราฟและความเสี่ยงรายวัน', en: 'Without charts and daily risk' },
+            'Simple, clear and understandable approach': { th: 'วิธีการที่เรียบง่าย ชัดเจน และเข้าใจง่าย', en: 'Simple, clear and understandable approach' },
+            'Important Note': { th: 'หมายเหตุสำคัญ', en: 'Important Note' },
+            'This is not financial advice': { th: 'นี่ไม่ใช่คำแนะนำทางการเงิน', en: 'This is not financial advice' },
+
+            // Role slide
+            'My Role Today': { th: 'บทบาทของฉันในวันนี้', en: 'My Role Today' },
+            'I Will Give You:': { th: 'ฉันจะให้คุณ:', en: 'I Will Give You:' },
+            'What I don\'t do:': { th: 'สิ่งที่ฉันไม่ทำ:', en: 'What I don\'t do:' },
+            'Clear understanding of the company': { th: 'ความเข้าใจที่ชัดเจนเกี่ยวกับบริษัท', en: 'Clear understanding of the company' },
+            'How they generate revenue': { th: 'วิธีที่พวกเขาสร้างรายได้', en: 'How they generate revenue' },
+            'What are the opportunities': { th: 'โอกาสมีอะไรบ้าง', en: 'What are the opportunities' },
+            'What are the risks': { th: 'ความเสี่ยงมีอะไรบ้าง', en: 'What are the risks' },
+            'How to make your own decision': { th: 'วิธีตัดสินใจด้วยตัวเอง', en: 'How to make your own decision' },
+            'I don\'t persuade': { th: 'ฉันไม่ชักชวน', en: 'I don\'t persuade' },
+            'I don\'t sell anything': { th: 'ฉันไม่ขายอะไร', en: 'I don\'t sell anything' },
+            'I don\'t offer packages': { th: 'ฉันไม่เสนอแพ็คเกจ', en: 'I don\'t offer packages' },
+            'I don\'t rush decisions': { th: 'ฉันไม่เร่งตัดสินใจ', en: 'I don\'t rush decisions' },
+
+            // Company background
+            'Five Years of Real Business': { th: 'ห้าปีของธุรกิจจริง', en: 'Five Years of Real Business' },
+            'The company operates with real offices, employees and activities': { th: 'บริษัทดำเนินงานด้วยสำนักงานจริง พนักงาน และกิจกรรม', en: 'The company operates with real offices, employees and activities' },
+            'Years in Operation': { th: 'ปีในการดำเนินงาน', en: 'Years in Operation' },
+            'Clients Globally': { th: 'ลูกค้าทั่วโลก', en: 'Clients Globally' },
+            'Employees': { th: 'พนักงาน', en: 'Employees' },
+            'Real Estate Portfolio': { th: 'พอร์ตอสังหาริมทรัพย์', en: 'Real Estate Portfolio' },
+
+            // Founders
+            'THE TEAM BEHIND YOU': { th: 'ทีมงานที่อยู่เบื้องหลัง', en: 'THE TEAM BEHIND YOU' },
+            'Experienced leaders dedicated to your success': { th: 'ผู้นำที่มีประสบการณ์อุทิศตนเพื่อความสำเร็จของคุณ', en: 'Experienced leaders dedicated to your success' },
+
+            // Ecosystem
+            'CRYPQUE ECOSYSTEM': { th: 'ระบบนิเวศ CRYPQUE', en: 'CRYPQUE ECOSYSTEM' },
+            'Diverse Product Family and Services': { th: 'ครอบครัวผลิตภัณฑ์และบริการที่หลากหลาย', en: 'Diverse Product Family and Services' },
+
+            // Income sources
+            'Where Does Company Revenue Come From?': { th: 'รายได้บริษัทมาจากไหน?', en: 'Where Does Company Revenue Come From?' },
+            'Three Strong Revenue Streams': { th: 'แหล่งรายได้ที่แข็งแกร่งสามแหล่ง', en: 'Three Strong Revenue Streams' },
+            'Arbitrage': { th: 'อาร์บิทราจ', en: 'Arbitrage' },
+            'Diversification': { th: 'การกระจายความเสี่ยง', en: 'Diversification' },
+            'Crypto Research': { th: 'การวิจัยคริปโต', en: 'Crypto Research' },
+
+            // Arbitrage explanation
+            'What is Arbitrage?': { th: 'อาร์บิทราจคืออะไร?', en: 'What is Arbitrage?' },
+            'Company\'s Main Activity - 50% of Revenue': { th: 'กิจกรรมหลักของบริษัท - 50% ของรายได้', en: 'Company\'s Main Activity - 50% of Revenue' },
+            'Arbitrage Means:': { th: 'อาร์บิทราจหมายถึง:', en: 'Arbitrage Means:' },
+            'Buying currency/crypto in one place cheaper': { th: 'ซื้อสกุลเงิน/คริปโตในที่หนึ่งราคาถูกกว่า', en: 'Buying currency/crypto in one place cheaper' },
+            'and selling in another for more': { th: 'และขายในที่อื่นในราคาที่สูงกว่า', en: 'and selling in another for more' },
+
+            // Price differences
+            'USDT Price Differences': { th: 'ความแตกต่างของราคา USDT', en: 'USDT Price Differences' },
+            'Illustrative example - price differences between countries': { th: 'ตัวอย่างประกอบ - ความแตกต่างของราคาระหว่างประเทศ', en: 'Illustrative example - price differences between countries' },
+
+            // Profit generation
+            'How Is Profit Generated?': { th: 'กำไรสร้างขึ้นอย่างไร?', en: 'How Is Profit Generated?' },
+            'Buy in large quantities at lower price': { th: 'ซื้อจำนวนมากในราคาต่ำกว่า', en: 'Buy in large quantities at lower price' },
+            'Sell at higher price in another country': { th: 'ขายในราคาที่สูงกว่าในประเทศอื่น', en: 'Sell at higher price in another country' },
+            'Earn 0.5-8% difference': { th: 'ได้รับส่วนต่าง 0.5-8%', en: 'Earn 0.5-8% difference' },
+            'Repeated every day': { th: 'ทำซ้ำทุกวัน', en: 'Repeated every day' },
+            'Average Profit Per Cycle': { th: 'กำไรเฉลี่ยต่อรอบ', en: 'Average Profit Per Cycle' },
+            'Transactions Per Month': { th: 'ธุรกรรมต่อเดือน', en: 'Transactions Per Month' },
+            'Monthly Returns': { th: 'ผลตอบแทนรายเดือน', en: 'Monthly Returns' },
+            'Stable': { th: 'มั่นคง', en: 'Stable' },
+
+            // Other revenue
+            'Other Revenue Streams (50%)': { th: 'แหล่งรายได้อื่นๆ (50%)', en: 'Other Revenue Streams (50%)' },
+            'Besides arbitrage, there are two more important income sources': { th: 'นอกจากอาร์บิทราจ ยังมีแหล่งรายได้สำคัญอีกสองแหล่ง', en: 'Besides arbitrage, there are two more important income sources' },
+            'Crypto Research (20%)': { th: 'การวิจัยคริปโต (20%)', en: 'Crypto Research (20%)' },
+            'Diversification (30%)': { th: 'การกระจายความเสี่ยง (30%)', en: 'Diversification (30%)' },
+
+            // Investor earnings
+            'How The Investor Earns': { th: 'นักลงทุนได้รับผลตอบแทนอย่างไร', en: 'How The Investor Earns' },
+            'Investor puts their money to work': { th: 'นักลงทุนนำเงินไปทำงาน', en: 'Investor puts their money to work' },
+            'Company uses for business': { th: 'บริษัทใช้เพื่อธุรกิจ', en: 'Company uses for business' },
+            'Profit is generated': { th: 'เกิดกำไร', en: 'Profit is generated' },
+            'Investor gets their share': { th: 'นักลงทุนได้รับส่วนแบ่ง', en: 'Investor gets their share' },
+            'Max 2.5× return': { th: 'ผลตอบแทนสูงสุด 2.5 เท่า', en: 'Max 2.5× return' },
+            'Average Monthly Return': { th: 'ผลตอบแทนเฉลี่ยต่อเดือน', en: 'Average Monthly Return' },
+            'Maximum Return': { th: 'ผลตอบแทนสูงสุด', en: 'Maximum Return' },
+            'Payout (min $10)': { th: 'จ่าย (ขั้นต่ำ $10)', en: 'Payout (min $10)' },
+            'Every day': { th: 'ทุกวัน', en: 'Every day' },
+            'Income comes from real business, not from recruiting people': { th: 'รายได้มาจากธุรกิจจริง ไม่ใช่จากการชวนคน', en: 'Income comes from real business, not from recruiting people' },
+
+            // Calculator
+            'Total Investment': { th: 'การลงทุนทั้งหมด', en: 'Total Investment' },
+            'Hub (contract)': { th: 'Hub (สัญญา)', en: 'Hub (contract)' },
+            'Platform access': { th: 'การเข้าถึงแพลตฟอร์ม', en: 'Platform access' },
+            'Working capital': { th: 'เงินทุนหมุนเวียน', en: 'Working capital' },
+            'This earns returns': { th: 'ได้รับผลตอบแทน', en: 'This earns returns' },
+            'TOTAL IN': { th: 'รวมเข้า', en: 'TOTAL IN' },
+            'Returns (25 months)': { th: 'ผลตอบแทน (25 เดือน)', en: 'Returns (25 months)' },
+            'Gross return': { th: 'ผลตอบแทนรวม', en: 'Gross return' },
+            'Withdrawal fee': { th: 'ค่าธรรมเนียมถอน', en: 'Withdrawal fee' },
+            'NET RETURN': { th: 'ผลตอบแทนสุทธิ', en: 'NET RETURN' },
+            'Net Profit': { th: 'กำไรสุทธิ', en: 'Net Profit' },
+            'Return on Investment': { th: 'ผลตอบแทนจากการลงทุน', en: 'Return on Investment' },
+
+            // Morocco trip
+            'AFRICA / MOROCCO': { th: 'แอฟริกา / โมร็อกโก', en: 'AFRICA / MOROCCO' },
+            'Exclusive Trip With The Founders': { th: 'ทริปพิเศษกับผู้ก่อตั้ง', en: 'Exclusive Trip With The Founders' },
+            'Four days with the company founders': { th: 'สี่วันกับผู้ก่อตั้งบริษัท', en: 'Four days with the company founders' },
+            'luxury program and Morocco\'s magical atmosphere': { th: 'โปรแกรมหรูและบรรยากาศมหัศจรรย์ของโมร็อกโก', en: 'luxury program and Morocco\'s magical atmosphere' },
+            'FREE TRIP FOR INVESTORS': { th: 'ทริปฟรีสำหรับนักลงทุน', en: 'FREE TRIP FOR INVESTORS' },
+            'Invest at least': { th: 'ลงทุนอย่างน้อย', en: 'Invest at least' },
+            'Qualify for FREE trip!': { th: 'มีสิทธิ์ได้ทริปฟรี!', en: 'Qualify for FREE trip!' },
+            'Flight Tickets': { th: 'ตั๋วเครื่องบิน', en: 'Flight Tickets' },
+            'Luxury Hotel': { th: 'โรงแรมหรู', en: 'Luxury Hotel' },
+            'Founders Present': { th: 'ผู้ก่อตั้งมาร่วม', en: 'Founders Present' },
+            'All Included': { th: 'รวมทุกอย่าง', en: 'All Included' },
+
+            // Closing
+            'Closing Words': { th: 'คำปิดท้าย', en: 'Closing Words' },
+            'If This Resonated': { th: 'ถ้าสนใจ', en: 'If This Resonated' },
+            'If Not For You': { th: 'ถ้าไม่ใช่สำหรับคุณ', en: 'If Not For You' },
+            'We can continue.': { th: 'เราสามารถดำเนินการต่อได้', en: 'We can continue.' },
+            'Let\'s talk details.': { th: 'มาคุยรายละเอียดกัน', en: 'Let\'s talk details.' },
+            'Let\'s look at options.': { th: 'มาดูตัวเลือกกัน', en: 'Let\'s look at options.' },
+            'Totally okay.': { th: 'ไม่เป็นไร', en: 'Totally okay.' },
+            'Thanks for listening.': { th: 'ขอบคุณที่รับฟัง', en: 'Thanks for listening.' },
+            'Good luck on your path!': { th: 'ขอให้โชคดี!', en: 'Good luck on your path!' },
+            'THANK YOU FOR LISTENING!': { th: 'ขอบคุณที่รับฟัง!', en: 'THANK YOU FOR LISTENING!' },
+
+            // Next steps
+            'What Happens Next?': { th: 'ต่อไปเป็นอย่างไร?', en: 'What Happens Next?' },
+            'Simple 4-step process to get started': { th: 'ขั้นตอนง่ายๆ 4 ขั้นตอนในการเริ่มต้น', en: 'Simple 4-step process to get started' },
+            'Contact': { th: 'ติดต่อ', en: 'Contact' },
+            'Get in touch and ask questions': { th: 'ติดต่อและถามคำถาม', en: 'Get in touch and ask questions' },
+            'Registration': { th: 'ลงทะเบียน', en: 'Registration' },
+            'Simple 5-minute registration': { th: 'ลงทะเบียนง่ายๆ 5 นาที', en: 'Simple 5-minute registration' },
+            'Contract & Deposit': { th: 'สัญญาและฝากเงิน', en: 'Contract & Deposit' },
+            'Choose HUB amount and activate': { th: 'เลือกจำนวน HUB และเปิดใช้งาน', en: 'Choose HUB amount and activate' },
+            'Earnings Begin': { th: 'เริ่มรับรายได้', en: 'Earnings Begin' },
+            'Money starts working 24/7': { th: 'เงินเริ่มทำงาน 24/7', en: 'Money starts working 24/7' },
+            'Here Today?': { th: 'อยู่ที่นี่วันนี้?', en: 'Here Today?' },
+            'Need Time To Think?': { th: 'ต้องการเวลาคิด?', en: 'Need Time To Think?' },
+            'Ask all your questions': { th: 'ถามคำถามทั้งหมดของคุณ', en: 'Ask all your questions' },
+            'Clarify details': { th: 'ชี้แจงรายละเอียด', en: 'Clarify details' },
+            'Get help with registration': { th: 'รับความช่วยเหลือในการลงทะเบียน', en: 'Get help with registration' },
+            'Choose suitable package': { th: 'เลือกแพ็คเกจที่เหมาะสม', en: 'Choose suitable package' },
+            'Take your time': { th: 'ใช้เวลาของคุณ', en: 'Take your time' },
+            'Research more info': { th: 'ค้นหาข้อมูลเพิ่มเติม', en: 'Research more info' },
+            'Get in touch later': { th: 'ติดต่อภายหลัง', en: 'Get in touch later' },
+            'Info stays available': { th: 'ข้อมูลยังคงมีอยู่', en: 'Info stays available' },
+            'Questions? Let\'s talk now or later!': { th: 'มีคำถาม? มาคุยกันตอนนี้หรือทีหลัง!', en: 'Questions? Let\'s talk now or later!' }
+        },
+
+        // Philippines uses English primarily
+        philippines: {},
+
+        // Europe uses English
+        europe: {},
+
+        // USA uses English
+        usa: {}
+    },
+
+    // Initialize the localization system
+    init: function() {
+        const savedMarket = localStorage.getItem('selectedMarket');
+        if (savedMarket) {
+            this.currentMarket = savedMarket;
+        }
+        this.updateCurrencyDisplay();
+    },
+
+    // Set market and update display
+    setMarket: function(market) {
+        this.currentMarket = market;
+        localStorage.setItem('selectedMarket', market);
+        this.updateCurrencyDisplay();
+        this.updateTranslations();
+
+        // Update calculator if exists
+        if (typeof window.updateCalculator === 'function') {
+            window.updateCalculator();
+        }
+    },
+
+    // Convert EUR to local currency
+    convertFromEUR: function(eurAmount) {
+        const rate = this.currencyRates[this.currentMarket];
+        return Math.round(eurAmount * rate.rate);
+    },
+
+    // Convert USD to local currency (via EUR)
+    convertFromUSD: function(usdAmount) {
+        // First convert USD to EUR (USD * 0.92 ≈ EUR)
+        const eurAmount = usdAmount * 0.92;
+        return this.convertFromEUR(eurAmount);
+    },
+
+    // Format currency
+    formatCurrency: function(amount, fromCurrency = 'EUR') {
+        const rate = this.currencyRates[this.currentMarket];
+        let localAmount;
+
+        if (fromCurrency === 'USD') {
+            localAmount = this.convertFromUSD(amount);
+        } else {
+            localAmount = this.convertFromEUR(amount);
+        }
+
+        return rate.symbol + localAmount.toLocaleString();
+    },
+
+    // Get translation with dual display for Thai
+    getTranslation: function(key) {
+        if (this.currentMarket === 'thailand' && this.translations.thailand[key]) {
+            const trans = this.translations.thailand[key];
+            return {
+                primary: trans.th,
+                secondary: trans.en,
+                isDual: true
+            };
+        }
+        return {
+            primary: key,
+            secondary: null,
+            isDual: false
+        };
+    },
+
+    // Create dual-language HTML
+    createDualText: function(key, primarySize = '1em', secondarySize = '0.7em') {
+        const trans = this.getTranslation(key);
+        if (trans.isDual) {
+            return `<span style="display: block; font-size: ${primarySize};">${trans.primary}</span>
+                    <span style="display: block; font-size: ${secondarySize}; opacity: 0.7; font-style: italic;">${trans.secondary}</span>`;
+        }
+        return key;
+    },
+
+    // Update all currency displays on the page
+    updateCurrencyDisplay: function() {
+        const rate = this.currencyRates[this.currentMarket];
+
+        // Update currency indicators if they exist
+        const currencyIndicators = document.querySelectorAll('.currency-indicator');
+        currencyIndicators.forEach(el => {
+            el.textContent = rate.code;
+        });
+
+        // Update currency symbols
+        const currencySymbols = document.querySelectorAll('.currency-symbol');
+        currencySymbols.forEach(el => {
+            el.textContent = rate.symbol;
+        });
+    },
+
+    // Update all translations on the page
+    updateTranslations: function() {
+        if (this.currentMarket !== 'thailand') {
+            // Reset to English for non-Thai markets
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                el.innerHTML = key;
+            });
+            return;
+        }
+
+        // Apply Thai translations with dual display
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            const primarySize = el.getAttribute('data-primary-size') || '1em';
+            const secondarySize = el.getAttribute('data-secondary-size') || '0.7em';
+            el.innerHTML = this.createDualText(key, primarySize, secondarySize);
+        });
+    },
+
+    // Get current currency info
+    getCurrencyInfo: function() {
+        return this.currencyRates[this.currentMarket];
+    }
+};
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', function() {
+    window.MarketLocalization.init();
+});
+
+
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
