@@ -930,26 +930,68 @@ body {
 /* Mobile phones */
 @media screen and (max-width: 768px) {
     body {
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
     }
 
     .presentation {
-        height: auto;
+        height: auto !important;
         min-height: 100vh;
+        overflow: visible !important;
     }
 
     .slide {
-        position: relative;
-        height: auto;
+        position: relative !important;
+        height: auto !important;
         min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .slide.active {
+        display: block !important;
+        overflow-y: auto !important;
+    }
+
+    /* Force ALL slides to be scrollable */
+    .slide > div {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: auto !important;
     }
 
     .slide-content-wrapper {
-        padding: 20px 15px;
-        padding-bottom: 100px;
+        padding: 20px 15px !important;
+        padding-bottom: 100px !important;
+    }
+
+    /* Override inline flex and heights */
+    [style*="height: 100%"] {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    [style*="overflow: hidden"] {
+        overflow: visible !important;
+    }
+
+    /* Premium slides - force content visibility */
+    .premium-slide,
+    .setup-slide,
+    .title-slide,
+    .calculator-premium-slide {
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    .premium-slide > div,
+    .setup-slide > div,
+    .calculator-premium-slide > div {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 20px 15px !important;
+        padding-bottom: 100px !important;
     }
 
     /* Market selector on setup page */
@@ -1260,6 +1302,93 @@ body {
     [style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
+    }
+
+    /* Calculator slide specific fixes */
+    .calculator-premium-slide [style*="display: flex"][style*="gap: 25px"] {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .calculator-premium-slide [style*="flex: 1"] {
+        flex: none !important;
+        width: 100% !important;
+    }
+
+    /* Smaller input on calculator */
+    #calcTotal {
+        width: 100px !important;
+        font-size: 28px !important;
+    }
+
+    /* Setup slide card */
+    .setup-slide [style*="max-width: 600px"] {
+        max-width: 100% !important;
+        padding: 25px 15px !important;
+    }
+
+    /* Presenter photo smaller on mobile */
+    #presenterPhotoPreview {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Premium header bar smaller */
+    [style*="padding: 12px 30px"][style*="border-radius: 25px"] {
+        padding: 8px 15px !important;
+        font-size: 10px !important;
+    }
+
+    /* Reduce large font sizes in premium slides */
+    [style*="font-size: 4.5em"],
+    [style*="font-size: 4em"] {
+        font-size: 2em !important;
+    }
+
+    [style*="font-size: 52px"],
+    [style*="font-size: 48px"],
+    [style*="font-size: 44px"],
+    [style*="font-size: 42px"] {
+        font-size: 28px !important;
+    }
+
+    [style*="font-size: 38px"],
+    [style*="font-size: 36px"],
+    [style*="font-size: 34px"] {
+        font-size: 24px !important;
+    }
+
+    [style*="font-size: 26px"],
+    [style*="font-size: 24px"],
+    [style*="font-size: 22px"] {
+        font-size: 18px !important;
+    }
+
+    [style*="font-size: 20px"],
+    [style*="font-size: 18px"] {
+        font-size: 15px !important;
+    }
+
+    /* Rotating quote smaller */
+    #rotating-quote {
+        font-size: 16px !important;
+        padding: 15px !important;
+    }
+
+    /* Timer display smaller */
+    #timer-display {
+        font-size: 28px !important;
+    }
+
+    #countdown-timer {
+        padding: 12px 20px !important;
+    }
+
+    /* Gold accent lines narrower */
+    [style*="width: 120px"][style*="height: 4px"],
+    [style*="width: 100px"][style*="height: 4px"],
+    [style*="width: 80px"][style*="height: 3px"] {
+        width: 60px !important;
     }
 }
 

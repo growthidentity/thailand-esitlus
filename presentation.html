@@ -939,26 +939,68 @@ body {
 /* Mobile phones */
 @media screen and (max-width: 768px) {
     body {
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
     }
 
     .presentation {
-        height: auto;
+        height: auto !important;
         min-height: 100vh;
+        overflow: visible !important;
     }
 
     .slide {
-        position: relative;
-        height: auto;
+        position: relative !important;
+        height: auto !important;
         min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .slide.active {
+        display: block !important;
+        overflow-y: auto !important;
+    }
+
+    /* Force ALL slides to be scrollable */
+    .slide > div {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: auto !important;
     }
 
     .slide-content-wrapper {
-        padding: 20px 15px;
-        padding-bottom: 100px;
+        padding: 20px 15px !important;
+        padding-bottom: 100px !important;
+    }
+
+    /* Override inline flex and heights */
+    [style*="height: 100%"] {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    [style*="overflow: hidden"] {
+        overflow: visible !important;
+    }
+
+    /* Premium slides - force content visibility */
+    .premium-slide,
+    .setup-slide,
+    .title-slide,
+    .calculator-premium-slide {
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    .premium-slide > div,
+    .setup-slide > div,
+    .calculator-premium-slide > div {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 20px 15px !important;
+        padding-bottom: 100px !important;
     }
 
     /* Market selector on setup page */
@@ -1269,6 +1311,93 @@ body {
     [style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
+    }
+
+    /* Calculator slide specific fixes */
+    .calculator-premium-slide [style*="display: flex"][style*="gap: 25px"] {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .calculator-premium-slide [style*="flex: 1"] {
+        flex: none !important;
+        width: 100% !important;
+    }
+
+    /* Smaller input on calculator */
+    #calcTotal {
+        width: 100px !important;
+        font-size: 28px !important;
+    }
+
+    /* Setup slide card */
+    .setup-slide [style*="max-width: 600px"] {
+        max-width: 100% !important;
+        padding: 25px 15px !important;
+    }
+
+    /* Presenter photo smaller on mobile */
+    #presenterPhotoPreview {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Premium header bar smaller */
+    [style*="padding: 12px 30px"][style*="border-radius: 25px"] {
+        padding: 8px 15px !important;
+        font-size: 10px !important;
+    }
+
+    /* Reduce large font sizes in premium slides */
+    [style*="font-size: 4.5em"],
+    [style*="font-size: 4em"] {
+        font-size: 2em !important;
+    }
+
+    [style*="font-size: 52px"],
+    [style*="font-size: 48px"],
+    [style*="font-size: 44px"],
+    [style*="font-size: 42px"] {
+        font-size: 28px !important;
+    }
+
+    [style*="font-size: 38px"],
+    [style*="font-size: 36px"],
+    [style*="font-size: 34px"] {
+        font-size: 24px !important;
+    }
+
+    [style*="font-size: 26px"],
+    [style*="font-size: 24px"],
+    [style*="font-size: 22px"] {
+        font-size: 18px !important;
+    }
+
+    [style*="font-size: 20px"],
+    [style*="font-size: 18px"] {
+        font-size: 15px !important;
+    }
+
+    /* Rotating quote smaller */
+    #rotating-quote {
+        font-size: 16px !important;
+        padding: 15px !important;
+    }
+
+    /* Timer display smaller */
+    #timer-display {
+        font-size: 28px !important;
+    }
+
+    #countdown-timer {
+        padding: 12px 20px !important;
+    }
+
+    /* Gold accent lines narrower */
+    [style*="width: 120px"][style*="height: 4px"],
+    [style*="width: 100px"][style*="height: 4px"],
+    [style*="width: 80px"][style*="height: 3px"] {
+        width: 60px !important;
     }
 }
 
@@ -1891,7 +2020,7 @@ body {
         <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 40px;">
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2)); padding: 12px 30px; border-radius: 25px; border: 1px solid rgba(244, 208, 63, 0.5);">
-                    <span style="color: #f4d03f; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 2px;">WELCOME</span>
+                    <span style="color: #f4d03f; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 2px;" data-translate="WELCOME">WELCOME</span>
                 </div>
                 <div style="width: 55px; height: 55px; border-radius: 50%; overflow: hidden; border: 3px solid #f4d03f; box-shadow: 0 5px 20px rgba(244, 208, 63, 0.4);">
                     <img class="presenter-photo" src="LOGOS/Vambola Tullus.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Presenter">
@@ -1906,10 +2035,10 @@ body {
             <div style="width: 80px; height: 3px; background: linear-gradient(90deg, #c9a227, #f4d03f, #c9a227); margin-bottom: 25px; border-radius: 2px; box-shadow: 0 2px 10px rgba(201, 162, 39, 0.5);"></div>
 
             <!-- Title -->
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 3.5em; font-weight: 700; color: white; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 3.5em; font-weight: 700; color: white; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);" data-translate="Hello everyone!">
                 Hello everyone!
             </div>
-            <div style="font-family: 'Open Sans', sans-serif; font-size: 1.5em; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 40px; letter-spacing: 1px;">
+            <div style="font-family: 'Open Sans', sans-serif; font-size: 1.5em; font-weight: 300; color: rgba(255,255,255,0.8); margin-bottom: 40px; letter-spacing: 1px;" data-translate="Thank you for being here today">
                 Thank you for being here today
             </div>
 
@@ -1917,20 +2046,20 @@ body {
             <div style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(244, 208, 63, 0.08)); backdrop-filter: blur(15px); border-radius: 20px; padding: 35px 40px; margin-bottom: 30px; border: 1px solid rgba(244, 208, 63, 0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
                     <i class="fas fa-bullseye" style="font-size: 24px; color: #f4d03f;"></i>
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 600; color: #f4d03f; letter-spacing: 1px;">I will tell you today:</span>
+                    <span style="font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 600; color: #f4d03f; letter-spacing: 1px;" data-translate="I will tell you today:">I will tell you today:</span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 15px; padding-left: 36px;">
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <i class="fas fa-check-circle" style="color: #10b981; font-size: 18px;"></i>
-                        <span style="color: rgba(255,255,255,0.95); font-size: 18px;">How to grow money without complex trading</span>
+                        <span style="color: rgba(255,255,255,0.95); font-size: 18px;" data-translate="How to grow money without complex trading">How to grow money without complex trading</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <i class="fas fa-check-circle" style="color: #10b981; font-size: 18px;"></i>
-                        <span style="color: rgba(255,255,255,0.95); font-size: 18px;">Without charts and daily risk</span>
+                        <span style="color: rgba(255,255,255,0.95); font-size: 18px;" data-translate="Without charts and daily risk">Without charts and daily risk</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <i class="fas fa-check-circle" style="color: #10b981; font-size: 18px;"></i>
-                        <span style="color: rgba(255,255,255,0.95); font-size: 18px;">Simple, clear and understandable approach</span>
+                        <span style="color: rgba(255,255,255,0.95); font-size: 18px;" data-translate="Simple, clear and understandable approach">Simple, clear and understandable approach</span>
                     </div>
                 </div>
             </div>
@@ -1940,8 +2069,8 @@ body {
                 <div style="display: flex; align-items: flex-start; gap: 15px;">
                     <i class="fas fa-exclamation-triangle" style="font-size: 22px; color: #f59e0b; margin-top: 2px;"></i>
                     <div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; color: #f59e0b; margin-bottom: 8px;">Important Note</div>
-                        <div style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.5;">This is not financial advice - I'm just sharing information and everyone makes their own decision.</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; color: #f59e0b; margin-bottom: 8px;" data-translate="Important Note">Important Note</div>
+                        <div style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.5;" data-translate="This is not financial advice">This is not financial advice - I'm just sharing information and everyone makes their own decision.</div>
                     </div>
                 </div>
             </div>
@@ -1967,7 +2096,7 @@ body {
         <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 35px;">
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2)); padding: 12px 30px; border-radius: 25px; border: 1px solid rgba(244, 208, 63, 0.5);">
-                    <span style="color: #f4d03f; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 2px;">MY ROLE</span>
+                    <span style="color: #f4d03f; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 2px;" data-translate="MY ROLE">MY ROLE</span>
                 </div>
                 <div style="width: 55px; height: 55px; border-radius: 50%; overflow: hidden; border: 3px solid #f4d03f; box-shadow: 0 5px 20px rgba(244, 208, 63, 0.4);">
                     <img class="presenter-photo" src="LOGOS/Vambola Tullus.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Presenter">
@@ -1982,7 +2111,7 @@ body {
             <div style="width: 80px; height: 3px; background: linear-gradient(90deg, #c9a227, #f4d03f, #c9a227); margin-bottom: 25px; border-radius: 2px; box-shadow: 0 2px 10px rgba(201, 162, 39, 0.5);"></div>
 
             <!-- Title -->
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 3em; font-weight: 700; color: white; margin-bottom: 35px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 3em; font-weight: 700; color: white; margin-bottom: 35px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);" data-translate="My Role Today">
                 My Role Today
             </div>
 
@@ -1993,28 +2122,28 @@ body {
                 <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05)); backdrop-filter: blur(15px); border-radius: 20px; padding: 30px; border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px;">
                         <i class="fas fa-check-circle" style="font-size: 26px; color: #10b981;"></i>
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #10b981; letter-spacing: 1px;">I Will Give You:</span>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #10b981; letter-spacing: 1px;" data-translate="I Will Give You:">I Will Give You:</span>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 14px; padding-left: 10px;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">Clear understanding of the company</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="Clear understanding of the company">Clear understanding of the company</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">How they generate revenue</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="How they generate revenue">How they generate revenue</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">What are the opportunities</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="What are the opportunities">What are the opportunities</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">What are the risks</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="What are the risks">What are the risks</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">How to make your own decision</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="How to make your own decision">How to make your own decision</span>
                         </div>
                     </div>
                 </div>
@@ -2023,24 +2152,24 @@ body {
                 <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05)); backdrop-filter: blur(15px); border-radius: 20px; padding: 30px; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px;">
                         <i class="fas fa-times-circle" style="font-size: 26px; color: #ef4444;"></i>
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #ef4444; letter-spacing: 1px;">What I don't do:</span>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.2em; font-weight: 600; color: #ef4444; letter-spacing: 1px;" data-translate="What I don't do:">What I don't do:</span>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 14px; padding-left: 10px;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">I don't persuade</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="I don't persuade">I don't persuade</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">I don't sell anything</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="I don't sell anything">I don't sell anything</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">I don't offer packages</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="I don't offer packages">I don't offer packages</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%;"></div>
-                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;">I don't rush decisions</span>
+                            <span style="color: rgba(255,255,255,0.95); font-size: 16px;" data-translate="I don't rush decisions">I don't rush decisions</span>
                         </div>
                     </div>
                 </div>
