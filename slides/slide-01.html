@@ -168,21 +168,21 @@
             }, 6000);
 
             // 10 minute countdown timer
-            let timeLeft = 600; // 10 minutes in seconds
+            let slide1TimeLeft = 600; // 10 minutes in seconds
 
-            function updateTimer() {
-                const minutes = Math.floor(timeLeft / 60);
-                const seconds = timeLeft % 60;
+            function updateSlide1Timer() {
+                const minutes = Math.floor(slide1TimeLeft / 60);
+                const seconds = slide1TimeLeft % 60;
                 document.getElementById('timer-display').textContent =
                     `${minutes}:${seconds.toString().padStart(2, '0')}`;
 
-                if (timeLeft > 0) {
-                    timeLeft--;
+                if (slide1TimeLeft > 0) {
+                    slide1TimeLeft--;
                 } else {
                     document.getElementById('timer-display').textContent = "0:00";
                 }
             }
 
-            setInterval(updateTimer, 1000);
+            setInterval(updateSlide1Timer, 1000);
             </script>
         </div>

@@ -4,35 +4,6 @@ const totalSlides = slides.length;
 
 document.getElementById('totalSlides').textContent = totalSlides;
 
-// 5-minute countdown timer
-let timeLeft = 300; // 5 minutes in seconds
-let timerInterval;
-
-function startTimer() {
-    timerInterval = setInterval(() => {
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            document.getElementById('timer-display').textContent = '0:00';
-            document.getElementById('timer-display').style.color = '#ff4444';
-            return;
-        }
-
-        timeLeft--;
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        document.getElementById('timer-display').textContent =
-            `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-        // Change color when less than 1 minute
-        if (timeLeft < 60) {
-            document.getElementById('timer-display').style.color = '#ffaa00';
-        }
-    }, 1000);
-}
-
-// Start timer when presentation loads
-window.addEventListener('load', startTimer);
-
 function showSlide(n) {
     slides[currentSlide].classList.remove('active');
     currentSlide = (n + totalSlides) % totalSlides;
