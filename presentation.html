@@ -1958,10 +1958,10 @@ body {
 
         <!-- Title -->
         <div style="font-family: 'Montserrat', sans-serif; font-size: 2.5em; font-weight: 700; color: white; text-align: center; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-            <i class="fas fa-user-circle" style="color: #f4d03f; margin-right: 15px;"></i>Presenter Setup
+            <i class="fas fa-user-circle" style="color: #f4d03f; margin-right: 15px;"></i>ตั้งค่าผู้นำเสนอ
         </div>
         <div style="font-family: 'Open Sans', sans-serif; font-size: 1.2em; color: rgba(255,255,255,0.7); text-align: center; margin-bottom: 40px;">
-            Add your photo that will be displayed throughout the presentation
+            เพิ่มรูปภาพของคุณที่จะแสดงตลอดการนำเสนอ
         </div>
 
         <!-- Setup Card -->
@@ -1973,46 +1973,46 @@ body {
                     <img id="presenterPhotoImg" src="LOGOS/Vambola Tullus.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Presenter">
                 </div>
                 <div id="presenterName" style="font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 600; color: #f4d03f; margin-bottom: 5px;">Vambola Tullus</div>
-                <div style="font-size: 0.9em; color: rgba(255,255,255,0.6);">Current presenter</div>
+                <div style="font-size: 0.9em; color: rgba(255,255,255,0.6);">ผู้นำเสนอปัจจุบัน</div>
             </div>
 
             <!-- Upload Section -->
             <div style="text-align: center;">
                 <label for="presenterPhotoInput" style="display: inline-block; background: linear-gradient(135deg, #c9a227, #f4d03f); color: #0f0c08; padding: 15px 40px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1em; cursor: pointer; box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4); transition: all 0.3s; border: none;">
-                    <i class="fas fa-camera" style="margin-right: 10px;"></i>Choose New Photo
+                    <i class="fas fa-camera" style="margin-right: 10px;"></i>เลือกรูปภาพใหม่
                 </label>
                 <input type="file" id="presenterPhotoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
 
                 <!-- Confirmation Button (appears after upload) -->
                 <div id="confirmSection" style="display: none; margin-top: 20px;">
                     <button onclick="confirmPhoto()" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95em; cursor: pointer; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); border: none;">
-                        <i class="fas fa-check" style="margin-right: 8px;"></i>Confirm Photo
+                        <i class="fas fa-check" style="margin-right: 8px;"></i>ยืนยันรูปภาพ
                     </button>
                 </div>
 
                 <!-- Status Message -->
                 <div id="statusMessage" style="margin-top: 15px; font-size: 0.9em; color: #10b981; display: none;">
                     <i class="fas fa-check-circle" style="margin-right: 5px;"></i>
-                    <span id="statusText">Photo updated!</span>
+                    <span id="statusText">อัปเดตรูปภาพแล้ว!</span>
                 </div>
 
                 <div style="margin-top: 15px; font-size: 0.85em; color: rgba(255,255,255,0.5);">
-                    <i class="fas fa-info-circle" style="margin-right: 5px;"></i>Recommended: square photo (min 200x200px)
+                    <i class="fas fa-info-circle" style="margin-right: 5px;"></i>แนะนำ: รูปสี่เหลี่ยม (ขั้นต่ำ 200x200px)
                 </div>
             </div>
 
             <!-- Name Input -->
             <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
                 <label style="display: block; font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 10px;">
-                    <i class="fas fa-user" style="margin-right: 8px; color: #f4d03f;"></i>Presenter Name
+                    <i class="fas fa-user" style="margin-right: 8px; color: #f4d03f;"></i>ชื่อผู้นำเสนอ
                 </label>
-                <input type="text" id="presenterNameInput" placeholder="Your name" value="Vambola Tullus" style="width: 100%; padding: 15px 20px; border-radius: 15px; border: 2px solid rgba(244, 208, 63, 0.3); background: rgba(255,255,255,0.05); color: white; font-size: 1.1em; font-family: 'Open Sans', sans-serif; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#f4d03f'" onblur="this.style.borderColor='rgba(244, 208, 63, 0.3)'" oninput="updatePresenterName()">
+                <input type="text" id="presenterNameInput" placeholder="ชื่อของคุณ" value="Vambola Tullus" style="width: 100%; padding: 15px 20px; border-radius: 15px; border: 2px solid rgba(244, 208, 63, 0.3); background: rgba(255,255,255,0.05); color: white; font-size: 1.1em; font-family: 'Open Sans', sans-serif; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#f4d03f'" onblur="this.style.borderColor='rgba(244, 208, 63, 0.3)'" oninput="updatePresenterName()">
             </div>
 
             <!-- Preset Photos -->
             <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
                 <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 15px; text-align: center;">
-                    <i class="fas fa-users" style="margin-right: 8px; color: #f4d03f;"></i>Or select an existing presenter:
+                    <i class="fas fa-users" style="margin-right: 8px; color: #f4d03f;"></i>หรือเลือกผู้นำเสนอที่มีอยู่:
                 </div>
                 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                     <div onclick="selectPresetPresenter('LOGOS/Vambola Tullus.jpg', 'Vambola Tullus')" style="cursor: pointer; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
@@ -2022,55 +2022,19 @@ body {
                 </div>
             </div>
 
-            <!-- Market Selection -->
-            <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
-                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 15px; text-align: center;">
-                    <i class="fas fa-globe" style="margin-right: 8px; color: #f4d03f;"></i>Select Market / Language:
-                </div>
-                <div id="marketSelector" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
-                    <!-- Thailand -->
-                    <div onclick="selectMarket('thailand')" id="market-thailand" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
-                        <div style="font-size: 32px; margin-bottom: 8px;">🇹🇭</div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Thailand</div>
-                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">฿ THB + ไทย</div>
-                    </div>
-                    <!-- Philippines -->
-                    <div onclick="selectMarket('philippines')" id="market-philippines" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
-                        <div style="font-size: 32px; margin-bottom: 8px;">🇵🇭</div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Philippines</div>
-                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">₱ PHP</div>
-                    </div>
-                    <!-- Europe -->
-                    <div onclick="selectMarket('europe')" id="market-europe" class="market-option market-selected" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(244, 208, 63, 0.2)); border: 2px solid #f4d03f; transition: all 0.3s;">
-                        <div style="font-size: 32px; margin-bottom: 8px;">🇪🇺</div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">Europe</div>
-                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">€ EUR</div>
-                    </div>
-                    <!-- USA -->
-                    <div onclick="selectMarket('usa')" id="market-usa" class="market-option" style="cursor: pointer; text-align: center; padding: 15px 10px; border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(244, 208, 63, 0.3); transition: all 0.3s;">
-                        <div style="font-size: 32px; margin-bottom: 8px;">🇺🇸</div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9em; font-weight: 600; color: white;">USA</div>
-                        <div style="font-size: 0.75em; color: rgba(255,255,255,0.6);">$ USD</div>
-                    </div>
-                </div>
-                <div id="selectedMarketInfo" style="margin-top: 15px; text-align: center; font-size: 0.85em; color: #10b981;">
-                    <i class="fas fa-check-circle" style="margin-right: 5px;"></i>
-                    <span id="marketInfoText">Europe selected - € EUR, English</span>
-                </div>
-            </div>
         </div>
 
         <!-- Start Button -->
         <div style="margin-top: 40px;">
             <button onclick="startPresentation()" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 20px 60px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3em; cursor: pointer; box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4); border: none; transition: all 0.3s;">
-                <i class="fas fa-play" style="margin-right: 15px;"></i>Start Presentation
+                <i class="fas fa-play" style="margin-right: 15px;"></i>เริ่มการนำเสนอ
             </button>
         </div>
 
         <!-- Skip Link -->
         <div style="margin-top: 20px;">
             <a href="javascript:void(0)" onclick="skipSetup()" style="color: rgba(255,255,255,0.5); font-size: 0.9em; text-decoration: none;">
-                <i class="fas fa-forward" style="margin-right: 5px;"></i>Skip (use defaults)
+                <i class="fas fa-forward" style="margin-right: 5px;"></i>ข้าม (ใช้ค่าเริ่มต้น)
             </a>
         </div>
 
@@ -2946,15 +2910,15 @@ body {
                     <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
                         <div style="display: flex; align-items: flex-start; gap: 8px;">
                             <i class="fas fa-check-circle" style="color: #10b981; font-size: 10px; margin-top: 2px;"></i>
-                            <span style="color: rgba(255,255,255,0.9);">15+ years of training experience</span>
+                            <span style="color: rgba(255,255,255,0.9);">ประสบการณ์การฝึกอบรมมากกว่า 15 ปี</span>
                         </div>
                         <div style="display: flex; align-items: flex-start; gap: 8px;">
                             <i class="fas fa-check-circle" style="color: #10b981; font-size: 10px; margin-top: 2px;"></i>
-                            <span style="color: rgba(255,255,255,0.9);">Crypto education pioneer</span>
+                            <span style="color: rgba(255,255,255,0.9);">ผู้บุกเบิกการศึกษาคริปโต</span>
                         </div>
                         <div style="display: flex; align-items: flex-start; gap: 8px;">
                             <i class="fas fa-check-circle" style="color: #10b981; font-size: 10px; margin-top: 2px;"></i>
-                            <span style="color: rgba(255,255,255,0.9);">Masterclass presenter</span>
+                            <span style="color: rgba(255,255,255,0.9);">ผู้นำเสนอมาสเตอร์คลาส</span>
                         </div>
                     </div>
                 </div>
@@ -3269,7 +3233,7 @@ body {
                 <div style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(244, 208, 63, 0.08)); backdrop-filter: blur(15px); border-radius: 20px; padding: 25px; border: 1px solid rgba(244, 208, 63, 0.25); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
                         <i class="fab fa-bitcoin" style="font-size: 24px; color: #f4d03f;"></i>
-                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 600; color: #f4d03f;">Crypque Does The Same:</span>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 600; color: #f4d03f;">Crypque ทำแบบเดียวกัน:</span>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <div style="display: flex; align-items: center; gap: 12px;">
@@ -3297,10 +3261,10 @@ body {
                 <div style="display: flex; align-items: flex-start; gap: 15px;">
                     <i class="fas fa-exchange-alt" style="font-size: 22px; color: #f59e0b; margin-top: 2px;"></i>
                     <div>
-                        <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; color: #f59e0b; margin-bottom: 8px;">Real Life Example - Currency Exchange</div>
+                        <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; color: #f59e0b; margin-bottom: 8px;">ตัวอย่างในชีวิตจริง - การแลกเปลี่ยนสกุลเงิน</div>
                         <div style="color: rgba(255,255,255,0.9); font-size: 15px; line-height: 1.5;">
-                            <strong>Popular currency exchanger:</strong> USD: They buy from you 1.1085 EUR → They sell to you 1.1720 EUR<br>
-                            <strong style="color: #f4d03f;">Difference: ~5.7% profit</strong> on every transaction — <em>This is arbitrage!</em>
+                            <strong>ร้านแลกเปลี่ยนสกุลเงินยอดนิยม:</strong> USD: พวกเขาซื้อจากคุณ 1.1085 EUR → พวกเขาขายให้คุณ 1.1720 EUR<br>
+                            <strong style="color: #f4d03f;">ส่วนต่าง: กำไร ~5.7%</strong> ในทุกธุรกรรม — <em>นี่คืออาร์บิทราจ!</em>
                         </div>
                     </div>
                 </div>
@@ -4823,7 +4787,7 @@ body {
 
 window.MarketLocalization = {
     // Current market setting
-    currentMarket: 'europe',
+    currentMarket: 'thailand',
 
     // Currency rates (EUR as base)
     currencyRates: {
@@ -5259,12 +5223,13 @@ window.MarketLocalization = {
         return this.currencyRates[this.currentMarket];
     },
 
-    // Create dual-language text (Thai primary, English smaller below)
+    // Create Thai-only text (no English subtitle for Thailand market)
     createDualText: function(thai, english, primaryClass = '', secondaryClass = '') {
         if (this.currentMarket !== 'thailand') {
             return english;
         }
-        return `<span class="thai-primary ${primaryClass}" style="display: block;">${thai}</span><span class="english-secondary ${secondaryClass}" style="display: block; font-size: 0.65em; opacity: 0.7; font-style: italic; margin-top: 2px;">${english}</span>`;
+        // Thai only - no English subtitle
+        return `<span class="thai-primary ${primaryClass}">${thai}</span>`;
     },
 
     // Translate a single text string
