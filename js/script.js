@@ -12,6 +12,19 @@ function showSlide(n) {
 
     // Update presenter photos from localStorage
     updateAllPresenterPhotos();
+
+    // Apply localization to the new slide
+    if (window.MarketLocalization) {
+        window.MarketLocalization.applyFullLocalization();
+    }
+
+    // Update calculator and leverage slides if they exist
+    if (typeof window.updateCalculator === 'function') {
+        window.updateCalculator();
+    }
+    if (typeof window.updateLeverageSlide === 'function') {
+        window.updateLeverageSlide();
+    }
 }
 
 function nextSlide() {
@@ -39,6 +52,13 @@ function updateAllPresenterPhotos() {
 
 // Update photos on load
 window.addEventListener('load', updateAllPresenterPhotos);
+
+// Apply localization on load
+window.addEventListener('load', function() {
+    if (window.MarketLocalization) {
+        window.MarketLocalization.applyFullLocalization();
+    }
+});
 
 document.addEventListener('keydown', (e) => {
     // Don't change slides if typing in an input field
