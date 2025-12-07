@@ -1958,10 +1958,10 @@ body {
 
         <!-- Title -->
         <div style="font-family: 'Montserrat', sans-serif; font-size: 2.5em; font-weight: 700; color: white; text-align: center; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-            <i class="fas fa-user-circle" style="color: #f4d03f; margin-right: 15px;"></i>ตั้งค่าผู้นำเสนอ
+            <i class="fas fa-user-circle" style="color: #f4d03f; margin-right: 15px;"></i>ตั้งค่าผู้นำเสนอ<br><span style="font-size: 0.5em; opacity: 0.7; font-style: italic;">Presenter Setup</span>
         </div>
         <div style="font-family: 'Open Sans', sans-serif; font-size: 1.2em; color: rgba(255,255,255,0.7); text-align: center; margin-bottom: 40px;">
-            เพิ่มรูปภาพของคุณที่จะแสดงตลอดการนำเสนอ
+            เพิ่มรูปภาพของคุณที่จะแสดงตลอดการนำเสนอ<br><span style="font-size: 0.8em; opacity: 0.7; font-style: italic;">Add your photo that will be displayed throughout the presentation</span>
         </div>
 
         <!-- Setup Card -->
@@ -1973,20 +1973,20 @@ body {
                     <img id="presenterPhotoImg" src="LOGOS/Vambola Tullus.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Presenter">
                 </div>
                 <div id="presenterName" style="font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 600; color: #f4d03f; margin-bottom: 5px;">Vambola Tullus</div>
-                <div style="font-size: 0.9em; color: rgba(255,255,255,0.6);">ผู้นำเสนอปัจจุบัน</div>
+                <div style="font-size: 0.9em; color: rgba(255,255,255,0.6);">ผู้นำเสนอปัจจุบัน<br><span style="font-size: 0.8em; opacity: 0.7; font-style: italic;">Current presenter</span></div>
             </div>
 
             <!-- Upload Section -->
             <div style="text-align: center;">
                 <label for="presenterPhotoInput" style="display: inline-block; background: linear-gradient(135deg, #c9a227, #f4d03f); color: #0f0c08; padding: 15px 40px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1em; cursor: pointer; box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4); transition: all 0.3s; border: none;">
-                    <i class="fas fa-camera" style="margin-right: 10px;"></i>เลือกรูปภาพใหม่
+                    <i class="fas fa-camera" style="margin-right: 10px;"></i>เลือกรูปภาพใหม่<br><span style="font-size: 0.7em; opacity: 0.8;">Choose New Photo</span>
                 </label>
                 <input type="file" id="presenterPhotoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
 
                 <!-- Confirmation Button (appears after upload) -->
                 <div id="confirmSection" style="display: none; margin-top: 20px;">
                     <button onclick="confirmPhoto()" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 12px 30px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95em; cursor: pointer; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); border: none;">
-                        <i class="fas fa-check" style="margin-right: 8px;"></i>ยืนยันรูปภาพ
+                        <i class="fas fa-check" style="margin-right: 8px;"></i>ยืนยันรูปภาพ<br><span style="font-size: 0.75em; opacity: 0.8;">Confirm Photo</span>
                     </button>
                 </div>
 
@@ -1997,14 +1997,14 @@ body {
                 </div>
 
                 <div style="margin-top: 15px; font-size: 0.85em; color: rgba(255,255,255,0.5);">
-                    <i class="fas fa-info-circle" style="margin-right: 5px;"></i>แนะนำ: รูปสี่เหลี่ยม (ขั้นต่ำ 200x200px)
+                    <i class="fas fa-info-circle" style="margin-right: 5px;"></i>แนะนำ: รูปสี่เหลี่ยม (ขั้นต่ำ 200x200px)<br><span style="font-size: 0.85em; opacity: 0.7; font-style: italic;">Recommended: square photo (min 200x200px)</span>
                 </div>
             </div>
 
             <!-- Name Input -->
             <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
                 <label style="display: block; font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 10px;">
-                    <i class="fas fa-user" style="margin-right: 8px; color: #f4d03f;"></i>ชื่อผู้นำเสนอ
+                    <i class="fas fa-user" style="margin-right: 8px; color: #f4d03f;"></i>ชื่อผู้นำเสนอ <span style="font-size: 0.8em; opacity: 0.7; font-style: italic;">(Presenter Name)</span>
                 </label>
                 <input type="text" id="presenterNameInput" placeholder="ชื่อของคุณ" value="Vambola Tullus" style="width: 100%; padding: 15px 20px; border-radius: 15px; border: 2px solid rgba(244, 208, 63, 0.3); background: rgba(255,255,255,0.05); color: white; font-size: 1.1em; font-family: 'Open Sans', sans-serif; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#f4d03f'" onblur="this.style.borderColor='rgba(244, 208, 63, 0.3)'" oninput="updatePresenterName()">
             </div>
@@ -2012,7 +2012,7 @@ body {
             <!-- Preset Photos -->
             <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(244, 208, 63, 0.2);">
                 <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-bottom: 15px; text-align: center;">
-                    <i class="fas fa-users" style="margin-right: 8px; color: #f4d03f;"></i>หรือเลือกผู้นำเสนอที่มีอยู่:
+                    <i class="fas fa-users" style="margin-right: 8px; color: #f4d03f;"></i>หรือเลือกผู้นำเสนอที่มีอยู่:<br><span style="font-size: 0.8em; opacity: 0.7; font-style: italic;">Or select an existing presenter:</span>
                 </div>
                 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                     <div onclick="selectPresetPresenter('LOGOS/Vambola Tullus.jpg', 'Vambola Tullus')" style="cursor: pointer; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
@@ -2027,14 +2027,14 @@ body {
         <!-- Start Button -->
         <div style="margin-top: 40px;">
             <button onclick="startPresentation()" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 20px 60px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3em; cursor: pointer; box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4); border: none; transition: all 0.3s;">
-                <i class="fas fa-play" style="margin-right: 15px;"></i>เริ่มการนำเสนอ
+                <i class="fas fa-play" style="margin-right: 15px;"></i>เริ่มการนำเสนอ<br><span style="font-size: 0.6em; opacity: 0.8;">Start Presentation</span>
             </button>
         </div>
 
         <!-- Skip Link -->
         <div style="margin-top: 20px;">
             <a href="javascript:void(0)" onclick="skipSetup()" style="color: rgba(255,255,255,0.5); font-size: 0.9em; text-decoration: none;">
-                <i class="fas fa-forward" style="margin-right: 5px;"></i>ข้าม (ใช้ค่าเริ่มต้น)
+                <i class="fas fa-forward" style="margin-right: 5px;"></i>ข้าม (ใช้ค่าเริ่มต้น) <span style="font-size: 0.85em; opacity: 0.7; font-style: italic;">/ Skip (use defaults)</span>
             </a>
         </div>
 
@@ -5223,13 +5223,13 @@ window.MarketLocalization = {
         return this.currencyRates[this.currentMarket];
     },
 
-    // Create Thai-only text (no English subtitle for Thailand market)
+    // Create dual text: Thai (big) + English (small underneath)
     createDualText: function(thai, english, primaryClass = '', secondaryClass = '') {
         if (this.currentMarket !== 'thailand') {
             return english;
         }
-        // Thai only - no English subtitle
-        return `<span class="thai-primary ${primaryClass}">${thai}</span>`;
+        // Thai primary (big) with English subtitle (small) underneath
+        return `<span class="thai-primary ${primaryClass}">${thai}</span><br><span class="english-subtitle ${secondaryClass}" style="font-size: 0.65em; opacity: 0.7; font-style: italic;">${english}</span>`;
     },
 
     // Translate a single text string
