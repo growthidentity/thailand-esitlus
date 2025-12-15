@@ -1929,3 +1929,68 @@ body {
         left: 10px;
     }
 }
+
+/* Fragment / Reveal Animation System */
+.fragment {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+}
+
+.fragment.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s;
+}
+
+/* Different fragment animation styles */
+.fragment.fade-in {
+    transform: none;
+}
+
+.fragment.slide-up {
+    transform: translateY(30px);
+}
+
+.fragment.slide-left {
+    transform: translateX(30px);
+}
+
+.fragment.slide-right {
+    transform: translateX(-30px);
+}
+
+.fragment.zoom-in {
+    transform: scale(0.8);
+}
+
+.fragment.visible.fade-in,
+.fragment.visible.slide-up,
+.fragment.visible.slide-left,
+.fragment.visible.slide-right,
+.fragment.visible.zoom-in {
+    transform: none;
+}
+
+
+/* ==================== DARK MODE FIX (Android) ==================== */
+html {
+    color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #0a0a0a !important;
+        color-scheme: dark !important;
+    }
+
+    img, video {
+        filter: none !important;
+    }
+
+    * {
+        forced-color-adjust: none !important;
+    }
+}

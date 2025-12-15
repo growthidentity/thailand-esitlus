@@ -4,11 +4,48 @@ const totalSlides = slides.length;
 
 document.getElementById('totalSlides').textContent = totalSlides;
 
-function showSlide(n) {
+// Fragment (reveal) system - elements with class "fragment" appear one by one
+function getFragments(slideIndex) {
+    return slides[slideIndex].querySelectorAll('.fragment:not(.visible)');
+}
+
+function getVisibleFragments(slideIndex) {
+    return slides[slideIndex].querySelectorAll('.fragment.visible');
+}
+
+function showNextFragment() {
+    const fragments = getFragments(currentSlide);
+    if (fragments.length > 0) {
+        fragments[0].classList.add('visible');
+        return true; // Fragment was shown
+    }
+    return false; // No more fragments
+}
+
+function hideAllFragments(slideIndex) {
+    const fragments = slides[slideIndex].querySelectorAll('.fragment');
+    fragments.forEach(f => f.classList.remove('visible'));
+}
+
+function showAllFragments(slideIndex) {
+    const fragments = slides[slideIndex].querySelectorAll('.fragment');
+    fragments.forEach(f => f.classList.add('visible'));
+}
+
+function showSlide(n, direction = 'forward') {
     slides[currentSlide].classList.remove('active');
+
+    // Hide fragments on old slide when leaving
+    hideAllFragments(currentSlide);
+
     currentSlide = (n + totalSlides) % totalSlides;
     slides[currentSlide].classList.add('active');
     document.getElementById('currentSlide').textContent = currentSlide + 1;
+
+    // If going backward, show all fragments immediately
+    if (direction === 'backward') {
+        showAllFragments(currentSlide);
+    }
 
     // Update presenter photos from localStorage
     updateAllPresenterPhotos();
@@ -28,16 +65,23 @@ function showSlide(n) {
 }
 
 function nextSlide() {
-    showSlide(currentSlide + 1);
+    showSlide(currentSlide + 1, 'backward'); // 'backward' shows all fragments
 }
 
 function prevSlide() {
-    showSlide(currentSlide - 1);
+    showSlide(currentSlide - 1, 'backward');
+}
+
+// Advance: show next fragment, or if none, go to next slide
+function advance() {
+    if (!showNextFragment()) {
+        nextSlide();
+    }
 }
 
 // Go to specific slide (for setup page)
 function goToSlide(n) {
-    showSlide(n);
+    showSlide(n, 'forward');
 }
 
 // Update all presenter photos from localStorage
@@ -66,10 +110,16 @@ document.addEventListener('keydown', (e) => {
         return;
     }
 
-    if (e.key === 'ArrowRight' || e.key === ' ') {
+    if (e.key === ' ') {
+        // Space bar: reveal next fragment, or go to next slide
+        e.preventDefault();
+        advance();
+    } else if (e.key === 'ArrowRight') {
+        // Right arrow: always go to next slide (skip fragments)
         e.preventDefault();
         nextSlide();
     } else if (e.key === 'ArrowLeft') {
+        // Left arrow: go to previous slide
         e.preventDefault();
         prevSlide();
     }
@@ -111,18 +161,17 @@ function handleTouchEnd(e) {
     const isInteractive = target.closest('button, a, input, select, textarea, .market-option, [onclick]');
 
     if (isTap && !isInteractive) {
-        // Tap navigation - left half = back, right half = forward
+        // Tap navigation - left half = back, right/center = advance (fragments then slide)
         const screenWidth = window.innerWidth;
         const tapX = touchEndX;
 
-        if (tapX < screenWidth * 0.35) {
-            // Tapped on left 35% - go back
+        if (tapX < screenWidth * 0.25) {
+            // Tapped on left 25% - go back
             prevSlide();
-        } else if (tapX > screenWidth * 0.65) {
-            // Tapped on right 35% - go forward
-            nextSlide();
+        } else {
+            // Tapped anywhere else - advance (fragment or next slide)
+            advance();
         }
-        // Middle 30% does nothing (safe zone)
     } else {
         // Handle as swipe
         if (deltaX > 50 && deltaX > deltaY) {
@@ -134,3 +183,4 @@ function handleTouchEnd(e) {
         }
     }
 }
+
